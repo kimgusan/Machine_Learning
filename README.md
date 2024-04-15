@@ -1,7 +1,7 @@
 # 개요
 
 ### AI (Artificial Intelligence)
-![intro](https://github.com/kimgusan/Machine_Learning/assets/156397911/0591bffa-ebe9-4069-9903-a20ff5a57213)
+<img width="500px" alt="스크린샷 2024-04-11 오후 11 02 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/0591bffa-ebe9-4069-9903-a20ff5a57213">
 
 
 #### Rule-bask AI
@@ -46,7 +46,6 @@ https://kr.mathworks.com/discovery/reinforcement-learning.html>
 - 머신러닝 학습을 통해 로직이 생기면, 나온 결과가 어떻게 이렇게 나왔는 지에 대한 분석이 쉽지 않다. (블랙박스).
 - 데이터를 넣으면 원하는 것처럼 좋은 결과를 얻기란 쉽지 않다.
 
-
 #### R vs Pythonz
 
 - R
@@ -62,7 +61,7 @@ https://kr.mathworks.com/discovery/reinforcement-learning.html>
 <hr>
 <br>
 <br>
-<br>
+
 ### 분류 (Classifier)
 - 대표적인 지도학습 방법 중 하나이며, 다양한 문제와 정답을 학습한 뒤 별도의 테스트에서 정답을 예측한다.
 - 주어진 문제와 정답을 먼저 학습한 뒤 새로운 문제에 대한 정답을 예측하는 방식이다.
@@ -77,10 +76,11 @@ https://kr.mathworks.com/discovery/reinforcement-learning.html>
 - 지도 학습 시, 데이터의 학습을 위하 주어지는 정답을 의미한다.
 - 지도 학습 중, 분류의 경우 이를 레이블 또는 클래스라고도 부른다.
 
-![feature_target](https://github.com/kimgusan/Machine_Learning/assets/156397911/e0d33719-55c9-4799-8872-31ed846f41ba)
+<img width="500px" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e0d33719-55c9-4799-8872-31ed846f41ba">
 
 ### 분류 예측 프로세스
-![classifier_flow](https://github.com/kimgusan/Machine_Learning/assets/156397911/9ea76c0b-c7c4-4782-a5ef-a852f7296306)
+<img width="650px" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/9ea76c0b-c7c4-4782-a5ef-a852f7296306">
+
 
 #### 데이터 세트 분리
 **train_test_splot(feature, target, test_size, random_status)**
@@ -111,9 +111,9 @@ https://kr.mathworks.com/discovery/reinforcement-learning.html>
 - 각 특성이 개별적으로 처리되어 데이터를 분할하는데 데이터의 스케일의 영향을 받지 않으므로 결정트리에서는 정규화나 표준화 같은 전처리 과정이 필요없다.
 - 영향을 가장 많이 미치는 feature를 찾아낼 수도 있다.
 - 예측 성능을 계속해서 향상시키면 복잡한 규칙 구조를 가지기 때문에 <sub>※</sub>과적합(Overfitting)이 발생해서 예측 성능이 저하될 수 도 있다.
-- 가장 상위 노드를 "루트 노드"라고 하며, 나머지 분기점은 "서브 노드", 결정된 분류값 노드를 리프노드 "리프 노드"라고 한다.
+- 가장 상위 노드를 "루트 노드"라고 하며, 나머지 분기점은 "서브 노드", 결정된 분류값 노드를 리프노드 "리프 노드"라고 한다
 
-![decision_tree](https://github.com/kimgusan/Machine_Learning/assets/156397911/c3a612ca-ebcb-41ef-b159-c89a2f050aba)
+<img width="500" alt='decision_tree' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/c3a612ca-ebcb-41ef-b159-c89a2f050aba">
 
 - 복잡도를 감소시키는 것이 주목적이며, 정보의 복잡도를 불순도(Impurity)라고 한다.
 - 이를 수치화한 값으로 지니 계수(Gini coefficient) 가 있다.
@@ -124,9 +124,10 @@ https://kr.mathworks.com/discovery/reinforcement-learning.html>
 
 <sub>과적합이란, 학습 데이터를 과하게 학습시켜서 실제 데이터에서는 오차가 오히려 증가하는 현상이다.
 
-![overfitting](https://github.com/kimgusan/Machine_Learning/assets/156397911/8123d206-b2d0-4bb2-85b5-1e287bbde882)
+<img width="500" alt='overfitting' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/8123d206-b2d0-4bb2-85b5-1e287bbde882">
 
 <hr>
+
 #### Graphvisz
 - 결정트리 모델을 시각화 할 수 있다.
 - https://graphviz.org/download/
@@ -143,6 +144,7 @@ https://kr.mathworks.com/discovery/reinforcement-learning.html>
 <sub>※하이퍼 파라미터란: 최적의 훈련 모델을 구현하기 위해 알고리즘의 수치를 조정할 수 있는 변수를 의미한다.</sub>
 
 <hr>
+
 ### 데이터 전처리
 
 #### StandardScaler()
@@ -161,11 +163,12 @@ https://kr.mathworks.com/discovery/reinforcement-learning.html>
 - <code>from sklearn.preprocessing import MaxAbsScaler</code>
 
 <hr>
+
 ### 교차 검증(Cross Validation)
 - 기존 방식에서는 데이터 세트에서 학습 데이터 세트와 테스트 데이터 세트를 분리한 뒤 모델 검증을 진행한다.
 - 교차 검증 시, 학습 데이터를 다시 분할하여 학습 데이터오 모델 성능을 1차 평가하는 검증 데이터로 나눈다.
 
-![cross_validation01](https://github.com/kimgusan/Machine_Learning/assets/156397911/e0923995-2c63-49d1-870d-b75455961997)
+<img width="500" alt='cross_validation01' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e0923995-2c63-49d1-870d-b75455961997">
 
 #### 교차 검증의 장단점
 - 👍특정 데이터 세트에 대한 과적합 방지
@@ -184,7 +187,7 @@ Stratified K-Fold
 - K-Fold와 마찬가지로 k번 수행하지만, 학습 데이터 세트와 검증 데이터 세트가 가지는 타겟의 분포도가 유사하도록 검증한다.
 - 타겟 데이터의 비중을 항상 똑같게 자르기 때문에 데이터가 한 곳으로 치중되는 것을 방지한다.
 
-![cross_validation02](https://github.com/kimgusan/Machine_Learning/assets/156397911/86eda7f8-7e37-44a5-96ef-c50c9519440c)
+<img width="500" alt='cross_validation02' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/86eda7f8-7e37-44a5-96ef-c50c9519440c">
 
   
 GridSearchCV
@@ -192,7 +195,7 @@ GridSearchCV
 - max_depth와 min_samples_split에 1차원 정수형 list를 전달하면, 2차원으로 결합하여 격자(Grid)를 만들고, 이 중의 최적의 점을 찾아낸다.
 - 딥러닝에서는 학습 속도가 머신러닝에 비해 느리고, 레이어(층)가 깊어질 수록 조정해주어야 할 하이퍼 파라미터 값이 많아지기 때문에, RandomSearchCV에서 대략적인 범위를 찾은 다음, GridSearchCV로 디테일을 조정하는 방식을 사용한다.
 
-![grid_search_cv](https://github.com/kimgusan/Machine_Learning/assets/156397911/a7c91704-703f-4698-8b1c-52957ce219ab)
+<img width="500" alt='grid_search_cv' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/a7c91704-703f-4698-8b1c-52957ce219ab">
 
 #### 편하게 수행할 수 있는 교차 검증
 **cross_val_score(estimator, x, y, cv, scoring)**
@@ -222,7 +225,7 @@ GridSearchCV
   생존한 강아지 80마리와 사망한 고양이 20마리를 테스트하면, 정확도는 80%이다.
   이 모델을 사용하면, 사망한 강아지 혹은 고양이를 절대 예측할 수 없다.
 
-![accuracy](https://github.com/kimgusan/Machine_Learning/assets/156397911/6738ab7b-ee21-4082-aeef-09ace4a669d8)
+<img width="500" alt='accuracy' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/6738ab7b-ee21-4082-aeef-09ace4a669d8">
 
 
 #### 오차 행렬 (Confision Matrix)
@@ -230,7 +233,7 @@ GridSearchCV
 - 데이터가 한 곳으로 치우친 것도 확인할 수 있으며, TP, TN, FP, FN 4가지로 구성되어 있다.
 - 오차 행렬로 분류 성능 평가 지표의 모든 것을 구할 수 있다(정확도, 정밀도, 재현율, F1 Score, ROC AUC)
 
-![confusion_matrix01](https://github.com/kimgusan/Machine_Learning/assets/156397911/62f56e66-c2de-46f1-b207-c5794551a59c)
+<img width="500" alt='confusion_matrix01' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/62f56e66-c2de-46f1-b207-c5794551a59c">
 
 1. TN: 예측한 값은 음성이고, 실제 값도 음성일 때 (맞춤)
 2. FP: 예측한 값은 양성이고, 실제 값은 음성일 때 (틀림)
@@ -239,7 +242,7 @@ GridSearchCV
 
 - 위 강아지와 고양이의 생존률 예측 보델의 오차 행렬은 다음과 같이 나온다.
   
-![confusion_matrix02](https://github.com/kimgusan/Machine_Learning/assets/156397911/736ee536-6aea-480c-b05e-e7d0221ff8b9)
+<img width="500" alt='confusion_matrix02' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/736ee536-6aea-480c-b05e-e7d0221ff8b9">
 
 - 100마리 전부 생존(음성, Negative)으로 예측했으며, 그 중 80마리는 실제 음성이고, 나머지 20마리는 실제 양성이기 때문이다
 - 보통 2진 분류일 경우 음성과 양성을 구분하는 의료학, 연구분야 등에서 많이 사용되며, 두 가지 상황으로 나눌 수 있다.
@@ -279,7 +282,8 @@ GridSearchCV
 > - FN: 모델이 Dead를 Alive로 잘못 분류한 경우 (error II)
 
 > - error I의 비용(FP)은 error II의 비용(FN)보다 훨씬 더 나쁘다! ▼FP, ▼error I
-![threshold](https://github.com/kimgusan/Machine_Learning/assets/156397911/dc3405e3-49bc-45aa-bc15-d6a0ccedef5f)
+<img width="500" alt='threshold' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/dc3405e3-49bc-45aa-bc15-d6a0ccedef5f">
+
 
 > - 정밀도 (Precision): 모델이 Dead로 예측한 환자 중에서 실제로 Dead인 환자의 비율을 나타낸다. 즉, 양성으로 예측한 결과 중 얼마나 많은 것이 진짜 양성인지 측정한다.  
 > - 재현율 (Recall): 실제 Dead 피해자 중에서 모델이 Dead로 정확하게 예측한 피해자의 비율을 나타낸다. 즉, 모델이 얼마나 많은 Dead 피해자를 "놓치지 않고" 감지했는지 측정한다.
@@ -296,7 +300,7 @@ GridSearchCV
 - 정밀도(Precision)와 재현율(Recall), 두 개의 평가 지표를 모두 고려하여 예측 성능을 평가하기 때문에 두 지표의 평균치를 구하는 조화 평균을 사용하여 조금 더 명확하게 모델의 예측 성능을 평가할 수 있다.
 - 텍스트 분류, 정보 검색, 암 진단 등에서 아용되는 모델의 성능을 평가할 수 있다.
 
-![trade_off](https://github.com/kimgusan/Machine_Learning/assets/156397911/974e5fa6-d7d5-40a9-b819-53cd75a3b9e9)
+<img width="500" alt='trade_off' src="https://github.com/kimgusan/Machine_Learning/assets/156397911/974e5fa6-d7d5-40a9-b819-53cd75a3b9e9">
 
 - F1 Score는 0~1까지 점수를 매길 수 있으며, 0에 가까울 수록 정밀도와 재현율 모두 낮다는 뜻이다.
 
@@ -311,5 +315,4 @@ GridSearchCV
 - 보통 F1 Score가 0.7 이상일 경우 좋은 모델이라 간주한다.  
 
 <img width="784" alt="스크린샷 2024-04-11 오후 11 02 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d5fe9c21-a88a-40af-952b-ec238ccf688a">
-
-  ![evaluation](https://github.com/kimgusan/Machine_Learning/assets/156397911/81545834-af6e-4615-bba7-0d887492ad83)
+<img width="200px" alt="스크린샷 2024-04-11 오후 11 02 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/81545834-af6e-4615-bba7-0d887492ad83">
