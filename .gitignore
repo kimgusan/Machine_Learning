@@ -20,3 +20,4 @@ b_classifier/dataset
 
 b_classifier/datasets/project_classifier/
 c_regression/datasets/
+d_dimension_reduction/datasets/
