@@ -13,11 +13,9 @@
     <details>
         <summary>Cycle</summary>   
         <ul style='list-style-type: none;'>
-            <li><a href="#cycle01">Cycle01()</a></li>
-            <li><a href='#cycle02'>Cycle02()</a></li>
-            <li><a href='#cycle03'>Cycle03()</a></li>
-            <li><a href='#cycle04'>Cycle04()</a></li>
-            <li><a href='#cycle05'>Cycle05()</a></li>
+            <li><a href="#cycle01">Cycle01(전처리 이후 회귀 훈련)</a></li>
+            <li><a href='#cycle02'>Cycle02(다중공선성 및 상관관계 확인 후 분석 효율을 위한 차원 축소 진행)</a></li>
+            <li><a href='#cycle03'>Cycle03(모델의 신뢰성을 위한 교차검증 진행)</a></li>
         </ul>
    </details>
 5. **결론**
@@ -39,12 +37,15 @@
 import pandas as pd
 
 h_df = pd.read_csv('../../../datasets/p_hospital-inpatient-discharges-sparcs-de-identified-2010-1.csv', low_memory=False)
-h_df
+h_d
 
 h_df.info()
 ```
 
 ### 3. 데이터 전처리
+
+<details>
+  <summary>Click data preprocessing</summary>
 
 ```
 # 결측치 확인
@@ -152,6 +153,10 @@ numeric_h_df
 num_h_df['Total Charges'] = np.log1p(num_h_df['Total Charges'])
 
 ```
+
+</details>
+
+    
 <img width="540" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7aa3e2e7-1be9-4180-8799-cded1a13e522">
 <img width="398" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d5bad4b0-6e48-4e06-bf09-50c0f028460a">
 
@@ -160,6 +165,10 @@ num_h_df['Total Charges'] = np.log1p(num_h_df['Total Charges'])
 <h2 id='cycle01'>Cycle01</h2>
 <p>1. 타겟 데이터 분포가 일정하여 차원 축소 없이 분석 진행</p>
 
+
+<details>
+  <summary>Click Cycle01_code</summary>
+    
 ```
 # 회귀 분석 모델 사용
 from sklearn.linear_model import LinearRegression
@@ -229,12 +238,18 @@ for model in models:
     print(model.__class__.__name__)
     get_evaluation(y_test, prediction)
 ```
+</details>
+
 <img width="546" alt="스크린샷 2024-05-15 오후 11 11 43" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3dd0457f-53ec-40cc-a9fe-0e3b2d5cde6e">
 <img width="551" alt="스크린샷 2024-05-15 오후 11 11 49" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/a5fd267a-bf7c-45d2-bc75-f93a11d139fa">
 
+    
 <h2 id='cycle02'>Cycle02</h2>
 <p>1. 모델의 공분산성을 지닌 수치 중 높은 수치에 대하여 삭제 후 확인</p>
 <p>2. 모델 훈련속도의 효율을 높이기 위해 차원축소를 진행.</p>
+
+<details>
+  <summary>Click Cycle02_code</summary>
 
 ```
 # 상관관계 확인
@@ -357,9 +372,14 @@ plt.show()
 <img width="670" alt="스크린샷 2024-05-15 오후 11 16 04" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/345265cd-fbf5-4b1b-af63-edb03486e2b6">
 <img width="378" alt="스크린샷 2024-05-15 오후 11 16 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e453e9ac-7a40-426f-8363-9e5ff58f44dc">
 
+</details>
+
 
 <h2 id='cycle03'>Cycle03</h2>
 <p>1. 모델의 신뢰성을 높이기 위해 교차검증</p>
+
+<details>
+  <summary>Click Cycle03_code</summary>
 
 ```
 from sklearn.model_selection import cross_val_score, KFold
@@ -455,9 +475,17 @@ ax.scatter(y_test, prediction, edgecolors='red', c='orange', alpha=0.2)
 ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--')
 plt.show()
 ```
+
+</details>
+
+    
 <img width="667" alt="스크린샷 2024-05-15 오후 11 17 10" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/336d165c-1a65-48f9-a570-6e0d03e20ae4">
 <img width="369" alt="스크린샷 2024-05-15 오후 11 17 15" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/98016270-1533-4264-80c6-c67ab56e2079">
 
+
+<details>
+  <summary>Click Graph Code</summary>
+    
 ```
 bar 그래프 첨부
 import matplotlib.pyplot as plt
@@ -513,6 +541,8 @@ plt.grid(True, linestyle='--', linewidth=0.5, color='gray', axis='y', zorder=0)
 plt.tight_layout()
 plt.show()
 ```
+
+</details>
 
 <img width="726" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/79124254-e101-4534-9d20-7b6e1b645d60">
 
