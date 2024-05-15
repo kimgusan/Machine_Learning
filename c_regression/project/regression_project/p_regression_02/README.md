@@ -665,7 +665,7 @@ plt.show()
 <img width="735" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ad167a09-729a-4da8-8d51-d4efaf730d50">
 <img width="730" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/f4b05b04-870f-4e6c-bff0-6f2b98515aff">
 
-
+<hr>
 
 -   정리
 
