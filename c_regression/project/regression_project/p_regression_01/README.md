@@ -1,4 +1,4 @@
-# ① Regression01
+# ① Regression01 (선형)
 
 ## 주제: 😊 직업적 삶과 개인 생활 전반적인 만족 점수
 
@@ -70,6 +70,9 @@ pre_l_df.info()
 ```
 <hr>
 
+<details>
+  <summary>Click data preprocessing</summary>
+    
 ### 3. 데이터 전처리
 
 ```
@@ -79,6 +82,8 @@ pre_l_df = pre_l_df.drop_duplicates().reset_index(drop=True)
 # 상관관계 확인
 pre_l_df.corr()['WORK_LIFE_BALANCE_SCORE'].sort_values(ascending=False)[1:]
 ```
+
+</details>
 
 <img width="361" alt="스크린샷 2024-05-15 오후 4 45 18" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/62d1c572-2027-4233-8cff-c3ca01e49c4f">
 <img width="483" alt="스크린샷 2024-05-15 오후 4 48 52" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2ba37e31-ec58-4577-9d4d-e967b593010c">
@@ -93,6 +98,9 @@ pre_l_df.corr()['WORK_LIFE_BALANCE_SCORE'].sort_values(ascending=False)[1:]
 <h2 id="cycle01">Cycle01</h2>
 <p>1. 선형 모델 훈련</p>
 
+<details>
+  <summary>Click Cycle01_code</summary>
+    
 ```
  선형 데이터 훈련
 from sklearn.linear_model import LinearRegression
@@ -122,11 +130,16 @@ def get_evaluation(y_test, prediction):
           .format(MSE, RMSE, MSLE, RMSLE, R2))
 ```
 
+</details>
+    
 <img width="365" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/c267e9d4-a8b0-4b44-bfe9-06a09faee1cf">
 
 <h2 id="cycle02">Cycle02</h2>
 <p>1. 차원 축소 진행 (PCA)</p>
 <p>2. 선형 데이터 훈련</p>
+
+<details>
+  <summary>Click Cycle02_code</summary>
 
 ```
 from sklearn.model_selection import train_test_split
@@ -177,11 +190,17 @@ prediction = pipe.predict(X_test)
 get_evaluation(y_test, prediction)
 
 ```
+</details>
+    
 <img width="374" alt="스크린샷 2024-05-15 오후 4 53 36" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/39d47de8-c62c-436d-8f07-28791daeb63a">
+
 
 
 <h2 id="cycle03">Cycle03</h2>
 <p>1. 과적합을 판단하기 위해 교차검증 진행</p>
+
+<details>
+  <summary>Click Cycle03_code</summary>
  
 ```
 from sklearn.model_selection import cross_val_score, KFold
@@ -251,13 +270,19 @@ plt.show()
 
 ```
 
+</details>
+
 <img width="663" alt="스크린샷 2024-05-15 오후 4 55 10" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/1b7e1c78-07b9-459b-bfec-a6347f0111c2">
 <img width="373" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/13f7a7fa-2679-4848-b732-0ba19d2ed7ea">
 
 
--   Cycle04
-    -   파이토치를 사용하여 loss 값을 확인하여 그래프를 확인하여 실제 train 의 값과 test 의 값이 오차가 커지는 지점을 찾아서, 규제를 확인한다.
+<h2 id='cycle04'>Cycle04</h2>
+<p>1. 파이토치를 사용하여 loss 값을 확인하여 그래프를 확인하여 실제 train 의 값과 test 의 값이 오차가 커지는 지점을 찾아서, 규제를 확인한다.</p>
 
+
+<details>
+  <summary>Click Cycle04_code</summary>
+    
 ```
 import torch
 from torch.optim import SGD
@@ -329,12 +354,17 @@ plt.grid(True)
 plt.show()
 ```
 
+</details>
+
 <img width="603" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/26ff1f4c-7288-47fa-803d-5588825eb39c">
 
 
--   Cycle05
-    -   파이프라인을 구축하여 차원축소 진행 후 L2 규제 사용된 선형 회귀 분석 진행.
+<h2 id='cycle05'>Cycle05</h2>
+<p>1. 파이프라인을 구축하여 차원축소 진행 후 L2 규제 사용된 선형 회귀 분석 진행.</p>
 
+<details>
+  <summary>Click Cycle05_code</summary>
+    
 ```
 from sklearn.linear_model import Lasso
 from sklearn.linear_model import LinearRegression
@@ -373,8 +403,11 @@ get_evaluation(y_test, prediction)
 
 MSE: 420.1151, RMSE: 20.4967, MSLE: 0.0010, RMSLE: 0.0314, R2: 0.7949
 ```
-<img width="603" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/145a119d-1a9b-4844-b027-af16c1cd9a1a">
-<img width="603" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/a4a1a4c3-7408-45c2-b0fb-071bd716139e">
+
+</details>
+
+<img width="666" alt="스크린샷 2024-05-15 오후 11 40 44" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/0cb8bdf2-5421-4a16-a97e-04fd0424227d">
+<img width="374" alt="스크린샷 2024-05-15 오후 11 40 53" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d4bc62c6-651a-4626-9f83-d5ad05baa605">
 
 <img width="665" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2bd950a5-dc05-4320-b501-ac74b0f74dde">
 
