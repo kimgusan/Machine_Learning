@@ -65,6 +65,9 @@ origin_b_df = b_df.copy()
 
 ### 3. 데이터 전처리
 
+<details>
+  <summary>Click data preprocessing</summary>
+    
 ```
 # 범주형 데이터를 제외한 데이터 프레임 생성
 pre_b_df = b_df.copy()
@@ -87,6 +90,9 @@ pre_l_df = pre_l_df.drop_duplicates().reset_index(drop=True)
 # 상관관계 확인
 pre_l_df.corr()['WORK_LIFE_BALANCE_SCORE'].sort_values(ascending=False)[1:]
 ```
+
+</details>
+    
 <img width="451" alt="스크린샷 2024-05-15 오후 10 37 24" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/1c4f5394-80ed-4d86-b741-e1bd29a331af">
 <img width="493" alt="스크린샷 2024-05-15 오후 10 37 32" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/499ce314-f9a1-4059-87f0-f0bf0443e7c7">
 
@@ -98,6 +104,9 @@ pre_l_df.corr()['WORK_LIFE_BALANCE_SCORE'].sort_values(ascending=False)[1:]
 
 <h2 id="cycle01">Cycle01</h2>
 <p>1. 타겟형 데이터를 제외한 모델 훈련 진행, r2 score 확인</p>
+
+<details>
+  <summary>Click Cycle01_code</summary>
 
 ```
 # 선형 데이터 확인
@@ -168,7 +177,6 @@ plt.show()
 ```
 
 ```
-- test 검사 함수.
 
 import matplotlib.pyplot as plt
 
@@ -180,10 +188,6 @@ ax.scatter(y_test, prediction, edgecolors='red', c='orange', alpha=0.2)
 ax.plot([y_train.min(), y_train.max()], [y_train.min(), y_train.max()], 'k--')
 plt.show()
 ```
-<img width="675" alt="스크린샷 2024-05-15 오후 10 39 51" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/5e3f3d3f-083a-4df9-9175-ae07a2e7b8ad">
-<img width="391" alt="스크린샷 2024-05-15 오후 10 40 17" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4d1b89d9-d4d6-4994-b20e-7347e8739873">
-
-
 
 ```
 # C01
@@ -192,8 +196,17 @@ plt.show()
 - 이상치가 존재하는 것으로 확인
 ```
 
+</details>
+
+<img width="675" alt="스크린샷 2024-05-15 오후 10 39 51" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/5e3f3d3f-083a-4df9-9175-ae07a2e7b8ad">
+<img width="391" alt="스크린샷 2024-05-15 오후 10 40 17" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4d1b89d9-d4d6-4994-b20e-7347e8739873">
+
+
 <h2 id="cycle02">Cycle02</h2>
 <p>기존 범주형 데이터를 추가한 후 훈련 진행</p>
+
+<details>
+  <summary>Click Cycle02_code</summary>
 
 ```
 # 범주형 데이터 레이블인코딩
@@ -288,17 +301,21 @@ for model in models:
     print(model.__class__.__name__)
     get_evaluation_negative(y_test, prediction)
 ```
-
-<img width="245" alt="스크린샷 2024-05-15 오후 10 42 39" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/115bf70e-b11d-41cd-b6b0-4705d561c11a">
-
 ```
 # C02
 범주형 데이터 추가 시 비선형 데이터 수치가 높아지는 부분 확인
 트리기반의 모델에서 훈련이 더 잘되는 것을 확인하여 트리기반의 모델 선택
 ```
+</details>
+
+<img width="245" alt="스크린샷 2024-05-15 오후 10 42 39" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/115bf70e-b11d-41cd-b6b0-4705d561c11a">
+
 
 <h2 id="cycle03">Cycle03</h2>
 <p>이상치를 확인하였기 때문에 이상치 제거 후 훈련 진행</p>
+
+<details>
+  <summary>Click Cycle03_code</summary>
 
 ```
 # 이상치 제거를 위한 표준화 작업
@@ -395,6 +412,9 @@ for model in models:
     get_evaluation_negative(y_test, prediction)
 
 ```
+
+</details>
+    
 <img width="549" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4dced628-6f61-4851-80a3-19516294b517">
 
 <img width="672" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/17c5bdea-35a7-4665-b92e-1cc693132cc1">
@@ -404,6 +424,9 @@ for model in models:
 <h2 id="cycle04">Cycle04</h2>
 <p>과적합의 정도를 판단히기 위해 교차검증을 진행</p>
 <p>이전 검사에서 데이터의 정도를 봤을 때 과적합이 있을 수 있다는 판단</p>
+
+<details>
+  <summary>Click Cycle04_code</summary>
 
 ```
 from sklearn.model_selection import cross_val_score, KFold
@@ -451,14 +474,17 @@ get_evaluation_negative(y_test, prediction)
 MSE: 76253.2006, RMSE: 276.1398, R2: 0.7120
 ```
 
+</details>
+
 <img width="669" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2a1afd3e-d843-466d-8add-09a14d6d03d0">
 <img width="377" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4c4f900e-f56b-4c8e-a7ea-5a31808a314e">
 
 
-
-
 <h2 id='cycle05'>Cycle05</h2>
 <p>모델의 일반화를 위해 다중공선성과 상관관계확인 후 불필요 featrue 제거.</p>
+
+<details>
+  <summary>Click Cycle05_code</summary>
 
 ```
 origin_b_df = origin_b_df.drop(labels = ['Holiday'], axis = 1)
@@ -504,6 +530,8 @@ get_evaluation_negative(y_test, prediction)
 MSE: 73783.6514, RMSE: 271.6315, R2: 0.7213
 ```
 
+</details>
+    
 <img width="677" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/fd40add0-21dd-4545-b6bc-c9930a04798d">
 <img width="391" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/6a045345-f947-47aa-8e35-7c7680b61d83">
 
@@ -511,8 +539,12 @@ MSE: 73783.6514, RMSE: 271.6315, R2: 0.7213
 
 <h2 id='cycle06'>Cycle06</h2>
 <p>각 수치형 데이터에 대하여 powertransform 을 사용하여 일반화 강화</p>
-<p>Ridge 규제를 통해 과적함을 추가적으로 방지</p>
+<p>L2 규제를 통해 과적함을 추가적으로 방지</p>
 
+
+<details>
+  <summary>Click Cycle06_code</summary>
+    
 ```
 from sklearn.preprocessing import PowerTransformer
 
@@ -607,6 +639,9 @@ MSE: 88352.2831, RMSE: 297.2411, R2: 0.7834
 
     MSE: 88007.3417, RMSE: 296.6603, R2: 0.7842
 ```
+
+
+    
 <img width="191" alt="스크린샷 2024-05-15 오후 10 56 11" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/1d4ec3f0-4180-487a-9b19-7b78e66669f3">
 <img width="500" alt="스크린샷 2024-05-15 오후 10 56 27" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/152390bd-2e9b-4934-92b4-1f31707f47f7">
 
@@ -658,6 +693,7 @@ ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--')
 plt.show()
 ```
 
+</details>
 
 <img width="664" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/8a4f0d24-c7f6-49fa-92bd-6a9236670b8f">
 <img width="380" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/abc9c46a-f193-4d42-8b32-ff07234be844">
