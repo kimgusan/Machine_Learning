@@ -1,4 +1,4 @@
-# ① Regression01
+<img width="373" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/45332bfb-8e0b-4a29-866e-9f89a109fa93"># ① Regression01
 
 ## 주제: 😊 직업적 삶과 개인 생활 전반적인 만족 점수
 
@@ -21,23 +21,26 @@
    </details>
    
 6. **결론**
+
+<hr>
+
 ### 1. 가설 설정
 
 #### 가설 1: 라이프스타일 요소와 삶의 만족도 점수 간의 상관관계
 
 -   **가설 내용**  
-    특정 라이프스타일 요소(예: 신체 활동 수준, 사회적 활동, 일과 생활의 균형 등)는 삶의 만족도 점수와 강한 상관관계를 보일 것이다.  
-    이 가설은 라이프스타일이 개인의 일반적인 웰빙과 직접적으로 연결되어 있다는 가정에 기반한다.
+    특정 라이프스타일 요소(예: 신체 활동 수준, 사회적 활동, 일과 생활의 균형 등)는 삶의 만족도 점수와 강한 상관관계를 보일 것으로 예상됩니다.
+    이 가설은 라이프스타일이 개인의 일반적인 웰빙과 직접적으로 연결되어 있다는 가정으로 진행됩니다.
 
 #### 가설 2: 긍정적 요소들이 삶의 만족도에 더 큰 영향을 미친다
 
 -   **가설 내용**  
-    긍정적 요소(예: 자기계발, 목표 달성, 사회적 지원)는 부정적 요소(예: 스트레스, 업무 과부하)보다 삶의 만족도에 더 큰 긍정적 영향을 미칠 것이다.  
-    이 가설은 긍정적인 심리적, 사회적 자원이 부정적인 영향을 상쇄하고, 전반적인 만족도를 높인다는 이론에서 비롯된다.
+    긍정적 요소(예: 자기계발, 목표 달성, 사회적 지원)는 부정적 요소(예: 스트레스, 휴가 제한)보다 삶의 만족도에 더 큰 긍정적 영향을 미칠 것이다.  
+    이 가설은 긍정적인 심리적, 사회적 자원이 부정적인 영향을 상쇄하고, 전반적인 만족도를 높인다는 이론에서 발생됩니다.
 
 #### 가설 검증 방법
 
-1. **데이터 수집**: 설문조사, 인터뷰, 기존 연구 자료 등을 통해 삶과 일의 만족도에 영향을 미치는 요소에 대한 데이터를 수집합니다.
+1. **데이터 수집**: 설문조사를 통해 삶과 일의 만족도에 영향을 미치는 요소에 대한 데이터를 수집합니다.
 
 2. **통계적 분석**: 수집된 데이터에 대해 상관관계 분석, 회귀 분석 등을 실시하여 각 요소가 만족도에 미치는 영향의 정도와 방향을 파악합니다.
 
@@ -75,16 +78,14 @@ pre_l_df = pre_l_df.drop_duplicates().reset_index(drop=True)
 
 # 상관관계 확인
 pre_l_df.corr()['WORK_LIFE_BALANCE_SCORE'].sort_values(ascending=False)[1:]
-
-- 이미지 회귀선 넣기
-- corr 이미지 넣기
-- 상관관계 이미지 넗기
-- 선형 이미지 넣기
-- 양의 상관관계 음의 상관관계 넣기
-- 다중공산성 지표 넣기
-- OLS 지표 넣기
-
 ```
+
+<img width="361" alt="스크린샷 2024-05-15 오후 4 45 18" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/62d1c572-2027-4233-8cff-c3ca01e49c4f">
+<img width="483" alt="스크린샷 2024-05-15 오후 4 48 52" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2ba37e31-ec58-4577-9d4d-e967b593010c">
+<img width="595" alt="스크린샷 2024-05-15 오후 4 49 00" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/aa2b9580-05a7-48af-8c0a-b257b2938f92">
+<img width="188" alt="스크린샷 2024-05-15 오후 4 49 26" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/781ddef3-aab6-423a-b099-32f54483e279">
+<img width="525" alt="스크린샷 2024-05-15 오후 4 49 16" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d7747240-e778-4df8-8ae0-19d4bbda1fbc">
+
 
 ### 4. 데이터 훈련
 
@@ -106,21 +107,6 @@ l_r.fit(X_train, y_train)
 ```
 
 ```
-import numpy as np
-from sklearn.metrics import mean_squared_log_error, mean_squared_error, r2_score
-
-def get_evaluation(y_test, prediction):
-    MSE = mean_squared_error(y_test, prediction)
-    RMSE = np.sqrt(MSE)
-    MSLE = mean_squared_log_error(y_test, prediction)
-    RMSLE = np.sqrt(mean_squared_log_error(y_test, prediction))
-    R2 = r2_score(y_test, prediction)
-    print('MSE: {:.4f}, RMSE: {:.4f}, MSLE: {:.4f}, RMSLE: {:.4f}, R2: {:.4f}'\
-          .format(MSE, RMSE, MSLE, RMSLE, R2))
-
-```
-
-```
 # 훈련 데이터 평가 함수.
 import numpy as np
 from sklearn.metrics import mean_squared_log_error, mean_squared_error, r2_score
@@ -135,11 +121,7 @@ def get_evaluation(y_test, prediction):
           .format(MSE, RMSE, MSLE, RMSLE, R2))
 ```
 
-```
-# 훈련 결과 Cycle_01
-prediction = l_r.predict(X_test)
-get_evaluation(y_test, prediction)
-```
+<img width="365" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/c267e9d4-a8b0-4b44-bfe9-06a09faee1cf">
 
 <h2 id="cycle02">Cycle02</h2>
 <p>1. 차원 축소 진행 (PCA)</p>
@@ -157,6 +139,7 @@ for i in range(12):
 
     print(pca.explained_variance_ratio_.sum(), i)
 ```
+<img width="123" alt="스크린샷 2024-05-15 오후 4 52 43" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d8241fce-2a8d-4b61-9aa9-c45ec7d8e1ea">
 
 ```
 # 보존률
@@ -186,19 +169,19 @@ pipe = Pipeline(
 
 pipe.fit(X_train, y_train)
 ```
+<img width="125" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ebd7d281-0183-47d3-8c88-5e27fa937bbd">
 
 ```
 prediction = pipe.predict(X_test)
 get_evaluation(y_test, prediction)
 
-MSE: 221.7647, RMSE: 14.8918, MSLE: 0.0005, RMSLE: 0.0227, R2: 0.8917
 ```
+<img width="374" alt="스크린샷 2024-05-15 오후 4 53 36" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/39d47de8-c62c-436d-8f07-28791daeb63a">
+
 
 <h2 id="cycle03">Cycle03</h2>
 <p>1. 과적합을 판단하기 위해 교차검증 진행</p>
  
-
-
 ```
 from sklearn.model_selection import cross_val_score, KFold
 
@@ -249,14 +232,12 @@ get_evaluation(y_test, prediction)
 
 MSE: 221.7647, RMSE: 14.8918, MSLE: 0.0005, RMSLE: 0.0227, R2: 0.8917
 ```
+<img width="125" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4f0f7665-5578-4faf-ad32-0b027b0b0db4">
 
--   Cycle03
-    -   교차 검증 진행 시 과적합 여부를 판단하기 위한 그래프 확인
-    
+
+
+
 ```
-MSE: 226.5833, RMSE: 15.0527, MSLE: 0.0005, RMSLE: 0.0229, R2: 0.8874
-MSE: 224.9903, RMSE: 14.9997, MSLE: 0.0005, RMSLE: 0.0228, R2: 0.8904
-
 - 선형 그래프 첨부할 것.
 
 import matplotlib.pyplot as plt
@@ -269,8 +250,11 @@ ax.scatter(y_test, prediction, edgecolors='red', c='orange', alpha=0.2)
 ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--')
 plt.show()
 
-- 선형 결과 그래프 첨부할 것.
 ```
+
+<img width="663" alt="스크린샷 2024-05-15 오후 4 55 10" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/1b7e1c78-07b9-459b-bfec-a6347f0111c2">
+<img width="373" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/13f7a7fa-2679-4848-b732-0ba19d2ed7ea">
+
 
 -   Cycle04
     -   파이토치를 사용하여 loss 값을 확인하여 그래프를 확인하여 실제 train 의 값과 test 의 값이 오차가 커지는 지점을 찾아서, 규제를 확인한다.
