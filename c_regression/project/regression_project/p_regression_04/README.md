@@ -1,4 +1,4 @@
-# ① Regression01
+# ④ Regression04 (logistic)
 
 ## 주제: # ☄️ 주제: 쌍성 데이터 확인
 
@@ -10,7 +10,17 @@
 2. **데이터 분석**
 3. **데이터 전처리**
 4. **데이터 훈련**
-    - Cycle (n)반복 - 각 이미지에 대하여 링크를 걸어서 확인할 것.
+    <details>
+        <summary>Cycle</summary>   
+        <ul style='list-style-type: none;'>
+            <li><a href="#cycle01">Cycle01(로지스틱 회귀 훈련 진행)</a></li>
+            <li><a href='#cycle02'>Cycle02(언더샘플링 기법 사용 후 훈련 진행)</a></li>
+            <li><a href='#cycle03'>Cycle03(분표를 맞추기위한 power transform 사용 후 훈련 진행)</a></li>
+            <li><a href='#cycle04'>Cycle04(교차검증 후 훈련 진행)</a></li>
+            <li><a href='#cycle05'>Cycle05(다중공선성을 가진 feature 제거 후 훈련 진행)</a></li>
+            <li><a href='#cycle06'>Cycle06(파이토치를 활용한 손실값 확인 후 모델 훈련 진행 및 임계치를 조절한 모델 최적화)</a></li>
+        </ul>
+   </details>
 5. **결론**
 
 ## 1. 가설 설정
@@ -29,13 +39,8 @@
 
 -   **천문 데이터를 사용하여 쌍성인 별을 식별**:
     -   천문 데이터에 포함된 다양한 속성(예: 별의 밝기, 위치, 운동 속도 등)을 분석하여 쌍성 여부를 예측합니다.
-    -   이러한 데이터를 사용하여 쌍성을 구성하는 별들 간의 상호 작용과 그 특성을 이해하고자 합니다.
-
-#### 예상 결과:
-
--   분석을 통해 쌍성 별을 식별하는 주요 요소를 파악하고, 이를 통해 더 정확한 천문학적 예측 모델을 개발할 수 있습니다.
--   이 연구는 별의 쌍성 여부를 보다 정확하게 식별하는 방법론을 제시하며, 이는 천문학적 연구와 관측에 중요한 정보를 제공할 것입니다.
-
+    -   분석을 통해 쌍성 별을 식별하는 주요 요소를 파악하고, 이를 통해 더 정확한 천문학적 예측 모델을 개발할 수 있습니다.
+ 
 <hr>
 
 ### 2. 데이터 분석
@@ -63,18 +68,21 @@ s_df.duplicated().sum()
 
 ### 4. 데이터 훈련
 
--   Cycle01
-    1. 별도의 전처리 없이 훈련 진행.
+<h1 id='cycle01'>Cycle01</h1>
+<p>1. 로지스틱 회귀 분석 진행.</p>
+
+<details>
+    <summary>Click Cycle01_code</summary>   
 
 ```
 s_df.is_binary.value_counts()
-- 비중 그래프 첨부
-
 s_df.corr()['is_binary'].sort_values(ascending=False)[1:]
-- 상관관계 표 첨부
-- 상관관계 히트맵 첨부
-- OLS 지표 첨부
 ```
+
+<img width="153" alt="스크린샷 2024-05-16 오전 12 22 13" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/0070fbb3-4667-42f0-83e2-f5c8382e8ce1">
+<img width="460" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/38a9c5af-b0c5-458e-810d-770c16cf80b4">
+<img width="503" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/5763e3da-6d2b-4974-8014-5c1cca7881d0">
+
 
 ```
 # 로지스틱 회귀 모델 훈련
@@ -92,11 +100,18 @@ lg.fit(X_train, y_train)
 prediction = lg.predict(X_test)
 get_evaluation(y_test, prediction, lg, X_test)
 
-- 평가지표 그래프 첨부
 ```
 
--   Cycle02
-    1. 언더샘플링 진행 후 로지스틱 회귀 분석 진행
+</details>
+
+<img width="561" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/43aa319b-daa9-4c1d-a233-5375ad4012bb">
+
+
+<h2 id='cycle02'>Cycle02</h2>
+<p>1. 언더샘플링 진행 후 로지스틱 회귀 분석 진행</p>
+
+<details>
+    <summary>Click Cycle02_code</summary>   
 
 ```
 # 언더샘플링
@@ -105,10 +120,11 @@ sl1 = s_df[s_df['is_binary']==1]
 
 under_s_df = pd.concat([sl0, sl1]).reset_index(drop=True)
 under_s_df['is_binary'].value_counts()
-
-- 타겟 비중 같아진 그래프 첨부
-- OLS 지표 첨부
 ```
+
+<img width="155" alt="스크린샷 2024-05-16 오전 12 24 05" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/0cd2be50-ac04-4520-97f6-905832e7ac5a">
+<img width="500" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/583b7342-b325-4146-a3a2-6828358ca863">
+
 
 ```
 # 로지스틱 회귀 모델 훈련
@@ -121,16 +137,21 @@ X_train, X_test, y_train, y_test = \
 train_test_split(features, targets, test_size=0.2, stratify=targets, random_state=321)
 
 lg = LogisticRegression(solver='liblinear', random_state=321, max_iter=10000)
-# lg.fit(over_X_train, over_y_train)
 lg.fit(X_train, y_train)
 prediction = lg.predict(X_test)
 
 get_evaluation(y_test, prediction, lg, X_test)
-- 평가지표 그래프 첨부
 ```
+</details>
 
--   Cycle03
-    1. 모델의 수치들에 대하여 표준화를 위해 Power transform 진행
+<img width="564" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/313cb401-80db-48ee-af2c-da186e602c2c">
+
+
+<h2 id='cycle03'>Cycle03</h2>
+<p>1. 모델의 수치들에 대하여 표준화를 위해 Power transform 진행</p>
+
+<details>
+    <summary>Click Cycle03_code</summary>   
 
 ```
 # Power Trnsform 진행
@@ -145,14 +166,14 @@ for column in columns:
     p_u_s_df[column] = result
 
 p_u_s_df
-
-- 히스토그램 그래프 before 첨부
-- 히스토그램 그래프 after 첨부 첨부
 ```
 
-```
-- OLS 지표 그래프 첨부
-```
+<img width="518" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/cb842d4c-aa3b-4518-9280-e83600a4449d">
+<h4>before</h4>
+<img width="471" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/f0ffd80c-9f82-40ed-addd-ec1f97c80b72">
+<h4>after</h4>
+<img width="458" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/6567b35a-beae-4028-a866-6ec71dcab095">
+
 
 ```
 # 로지스틱 회귀 모델 훈련
@@ -170,11 +191,16 @@ lg.fit(X_train, y_train)
 prediction = lg.predict(X_test)
 
 get_evaluation(y_test, prediction, lg, X_test)
-- 평가지표 그래프 첨부
 ```
+</details>
 
--   Cycle04
-    1. 점수가 높게 나왔으며 과적합을 대비하기 위한 교차검증 진행
+<img width="551" alt="스크린샷 2024-05-16 오전 12 31 53" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/f17d4ade-802a-4ead-a90c-0de63b04b31c">
+
+<h2 id='cycle04'>Cycle04</h2>
+<p>1. 점수가 높게 나왔으며 과적합을 대비하기 위한 교차검증 진행</p>
+
+<details>
+    <summary>Click Cycle04_code</summary>   
 
 ```
 from sklearn.model_selection import cross_val_score, KFold
@@ -218,22 +244,25 @@ parameters = {
 # GridSearchCV 설정
 grid_lgb = GridSearchCV(lg, param_grid=parameters, cv=kfold, scoring='accuracy')  # 'r2' 대신 'accuracy' 사용
 grid_lgb.fit(X_train, y_train)
-
-- 평가 지표 그래프 첨부
 ```
 
--   Cycle05
-    1. 다중공선성을 가진 feature 제거
+</details>
+
+<img width="559" alt="스크린샷 2024-05-16 오전 12 32 51" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/b1ee56ae-9c87-4635-8041-e56df1eed66d">
+
+
+<h2 id='cycle05'>Cycle05</h2>
+<p>1. 다중공선성을 가진 feature 제거</p>
+
+<details>
+    <summary>Click Cycle05_code</summary>   
 
 ```
-- OLS 지표 첨부
-- 다중공선성 표 첨부
 pre_s_df = p_u_s_df.drop(labels=['b'], axis = 1)
 pre_s_df
 
 pre_s_df = p_u_s_df.drop(labels=['b'], axis = 1)
 pre_s_df
-- 특정 feature 삭제
 ```
 
 ```
@@ -263,13 +292,18 @@ parameters = {
 # GridSearchCV 설정
 grid_lgb = GridSearchCV(lg, param_grid=parameters, cv=kfold, scoring='accuracy')  # 'r2' 대신 'accuracy' 사용
 grid_lgb.fit(X_train, y_train)
-
-- 평가지표 그래프 첨부
-
 ```
 
--   Cycle06
-    1. 하이퍼파라미터 조정이 명확하지 않아 파이토치를 사용하여 모델 훈련
+</details>
+
+<img width="568" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e8d76951-f6ce-4bbf-8dcc-d1489ed1a43f">
+
+
+<h2 id='cycle06'>Cycle06</h2>
+<p>1. 하이퍼파라미터 조정이 명확하지 않아 파이토치를 사용하여 모델 훈련</p>
+
+<details>
+    <summary>Click Cycle06_code</summary>   
 
 ```
 import torch
@@ -318,9 +352,10 @@ for epoch in range(1, epochs + 1):
               .format(epoch, epochs, W[0].item(), W[1].item(), W[2].item(), b.item(), loss.item()))
 
 get_evaluation(y_test.detach().numpy(), torch.sigmoid(X_test.matmul(W) + b) >= 0.5)
-
-- 평가지표 표 확인
 ```
+
+<img width="568" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ef8bac39-bdc8-46cd-a158-3f0242cc1ae6">
+
 
 ```
 #import numpy as np
@@ -368,9 +403,9 @@ for epoch in range(1, epochs + 1):
         print(f'b: {np.round(list(logistic_r.parameters())[1].item())} Loss: {np.round(loss.item(), 4)}')
 
 get_evaluation(y_test.detach().numpy(), logistic_r(X_test) >= 0.5)
-
-- 평가지표 표 첨부
 ```
+
+<img width="568" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7a56d3eb-3b49-4f43-aae2-5344db266393">
 
 ```
 import numpy as np
@@ -433,11 +468,8 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-- 손실함수 그래프 첨부
-
 get_evaluation(y_test.detach().numpy(), logistic_r(X_test) >= 0.5)
 
-- 평가지표 표 첨부
 ```
 
 ```
@@ -472,9 +504,6 @@ def precision_recall_curve_plot(y_test , prediction_proba_class1):
 
 import numpy as np
 precision_recall_curve_plot(y_test, grid_lgb.predict_proba(X_test)[:, 1] )
-
-- AUC-ROC 그래프 확인
-
 ```
 
 ```
@@ -492,8 +521,6 @@ def get_evaluation_by_thresholds(y_test, prediction_proba_class1, thresholds):
         get_evaluation(y_test, custom_prediction)
 
 get_evaluation_by_thresholds(y_test, grid_lgb.predict_proba(X_test)[:, 1].reshape(-1, 1), thresholds)
-
-- 임계치, 평가지표 그래프 첨부
 ```
 
 ```
@@ -556,8 +583,8 @@ def roc_curve_plot(y_test , custom_proba):
     plt.legend()
     plt.show()
 
-- 임계치 수정 후 Roc Curve 곡선 첨부
 ```
+
 
 ```
 import pandas as pd
@@ -601,25 +628,28 @@ plt.grid(True, which='both', linestyle='--', linewidth=0.5)
 plt.tight_layout()
 plt.show()
 
-
-- 수치에 대한 bar 그래프 첨부
 ```
 
-## 결론
+</details>
 
-### 분석 결과
+<img width="578" alt="스크린샷 2024-05-16 오전 12 35 32" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/5efa5394-ffbd-402d-af13-9a1b44bc71d5">
+<p float='left'>
+<img width="417" alt="스크린샷 2024-05-16 오전 12 34 59" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/9bf4052f-72cf-4edd-9f2b-7fafe4984b00">
+<img width="405" alt="스크린샷 2024-05-16 오전 12 35 12" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/fd72fe7c-ef95-455f-bd62-365713fafe1a">
+<img width="419" alt="스크린샷 2024-05-16 오전 12 35 47" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/daa0c57c-6c5e-4261-b7aa-77fa1e3ef533">
+</p>
+<img width="460" alt="스크린샷 2024-05-16 오전 12 36 45" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2da4e38a-c3d4-45a2-bb69-a67c5e3713f0">
+<img width="385" alt="스크린샷 2024-05-16 오전 12 37 26" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d6003f0b-33d3-4060-9b96-384b5e6858ca">
+<img width="460" alt="스크린샷 2024-05-16 오전 12 44 57" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/bf4d0818-90b0-496f-adff-ea91d17ae9ba">
+<img width="737" alt="스크린샷 2024-05-16 오전 12 37 45" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2f9394c8-c624-4b32-99f3-1c70109aaee6">
 
--   **성능 개선 조치**: 언더샘플링과 임계치 조정을 통해 쌍성 별을 식별하는 데 필요한 정밀도를 최대화하였습니다. 이 접근법은 쌍성 별의 정확한 식별에 크게 기여하였습니다.
--   **훈련 방법**: 정밀도를 중시하는 모델 구축을 위해 적절한 데이터 전처리 후 체계적인 모델 훈련을 수행하였습니다. 결과적으로, 훈련된 모델은 실제 쌍성 별을 효과적으로 감지하는 능력을 보였습니다.
 
-### 기술적 접근
+<hr>
 
--   **모델의 특징**: 언더샘플링 기법을 사용하여 훈련 데이터의 균형을 맞추고, 정밀도가 높은 예측 모델을 구현했습니다. 이 모델은 쌍성 별을 정확하게 분류하는 데 중요한 요소들을 고려하였습니다.
--   **기술적 적용**: 사용된 모델은 고도의 데이터 분석 기법을 적용하여 복잡한 데이터 구조에서 유의미한 정보를 추출하였습니다. 이러한 접근은 과적합을 방지하고 모델의 일반화 능력을 향상시켰습니다.
-
-### 응용 가능성
-
+- 정리
+    -   **모델의 특징**: 언더샘플링 기법을 사용하여 훈련 데이터의 균형을 맞추고, 정밀도가 높은 예측 모델을 구현했습니다. 이 모델은 쌍성 별을 정확하게 분류하는 데 중요한 요소들을 고려하였습니다.
+    -   **성능 개선 조치**: 언더샘플링과 임계치 조정을 통해 쌍성 별을 식별하는 데 필요한 정밀도를 최대화하였습니다. 이 접근법은 쌍성 별의 정확한 식별에 크게 기여하였습니다.
+ 
+- 결론
 -   **과학적 연구와 관측**: 이 연구 결과는 쌍성 별의 정확한 식별을 통해 천문학적 연구에 필수적인 정보를 제공합니다. 이는 별의 질량, 궤도, 발광과 같은 중요한 특성을 이해하는 데 도움이 됩니다.
 -   **천문학 데이터의 활용**: 이 모델은 천문학 데이터의 복잡성을 효과적으로 처리하며, 실제 관측에서 쌍성 별을 정확하게 감지하는 능력을 강화합니다.
-
-이 결론은 프로젝트의 성공을 강조하며, 사용된 방법론과 기술이 어떻게 실제 응용에 기여할 수 있는지를 설명합니다.
