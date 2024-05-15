@@ -13,10 +13,11 @@
     <details>
         <summary>Cycle</summary>   
         <ul style='list-style-type: none;'>
-            <li><a href="#cycle01">Cycle01</a></li>
-            <li><a href='#cycle02'>Cycle02</a></li>
-            <li><a href='#cycle03'>Cycle03</a></li>
-            <li><a href='#cycle04'>Cycle04</a></li>
+            <li><a href="#cycle01">Cycle01(선형 모델 훈련.)</a></li>
+            <li><a href='#cycle02'>Cycle02(차원축소 및 선형 모델 훈련)</a></li>
+            <li><a href='#cycle03'>Cycle03(과적합 판단을 위한 교차검증 진행.)</a></li>
+            <li><a href='#cycle04'>Cycle04(파이토치를 사용한 최적의 loss 값 확인.)</a></li>
+            <li><a href='#cycle05'>Cycle05(차원 축소 진행 후 L2 규제를 사용한 회귀 모델 분석.)</a></li>
         </ul>
    </details>
    
@@ -40,13 +41,11 @@
 
 #### 가설 검증 방법
 
-1. **데이터 수집**: 설문조사를 통해 삶과 일의 만족도에 영향을 미치는 요소에 대한 데이터를 수집합니다.
+1. **통계적 분석**: 수집된 데이터에 대해 상관관계 분석, 회귀 분석 등을 실시하여 각 요소가 만족도에 미치는 영향의 정도와 방향을 파악합니다.
 
-2. **통계적 분석**: 수집된 데이터에 대해 상관관계 분석, 회귀 분석 등을 실시하여 각 요소가 만족도에 미치는 영향의 정도와 방향을 파악합니다.
-
-3. **모델링과 최적화**: 분석 결과를 바탕으로 예측 모델을 생성하고, 이 모델을 최적화하여 가설의 타당성을 평가합니다.  
+2. **모델링과 최적화**: 분석 결과를 바탕으로 예측 모델을 생성하고, 이 모델을 최적화하여 가설의 타당성을 평가합니다.  
    이러한 과정을 통해 설정된 가설의 타당성을 검증하고, 일과 삶의 만족도를 높이는 데 중요한 요소를 식별할 수 있습니다.  
-   이 결과는 개인과 조직의 웰빙 개선 전략 수립에 중요한 기여를 할 수 있습니다.
+   이 결과는 개인의 웰빙 점수를 개선하는데 전략 수립에 대한 중요한 부분을 확인할 수 있습니다.
 
 <hr>
 
@@ -69,6 +68,7 @@ pre_l_df
 pre_l_df.info()
 
 ```
+<hr>
 
 ### 3. 데이터 전처리
 
@@ -86,11 +86,12 @@ pre_l_df.corr()['WORK_LIFE_BALANCE_SCORE'].sort_values(ascending=False)[1:]
 <img width="188" alt="스크린샷 2024-05-15 오후 4 49 26" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/781ddef3-aab6-423a-b099-32f54483e279">
 <img width="525" alt="스크린샷 2024-05-15 오후 4 49 16" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d7747240-e778-4df8-8ae0-19d4bbda1fbc">
 
+<hr>
 
 ### 4. 데이터 훈련
 
 <h2 id="cycle01">Cycle01</h2>
-<p>1. 별도의 훈련 없이 선형 데이터 훈련</p>
+<p>1. 선형 모델 훈련</p>
 
 ```
  선형 데이터 훈련
@@ -238,8 +239,6 @@ MSE: 221.7647, RMSE: 14.8918, MSLE: 0.0005, RMSLE: 0.0227, R2: 0.8917
 
 
 ```
-- 선형 그래프 첨부할 것.
-
 import matplotlib.pyplot as plt
 
 prediction = grid_l.predict(X_test)
@@ -328,9 +327,10 @@ plt.title('Loss Trend Over Epochs')
 plt.legend()
 plt.grid(True)
 plt.show()
-
-- 손실함수 그래프 첨부 필요.
 ```
+
+<img width="603" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/26ff1f4c-7288-47fa-803d-5588825eb39c">
+
 
 -   Cycle05
     -   파이프라인을 구축하여 차원축소 진행 후 L2 규제 사용된 선형 회귀 분석 진행.
@@ -372,16 +372,15 @@ prediction = grid_l.predict(X_test)
 get_evaluation(y_test, prediction)
 
 MSE: 420.1151, RMSE: 20.4967, MSLE: 0.0010, RMSLE: 0.0314, R2: 0.7949
-
-
-- 손실함수 그래프 첨부 필요.
 ```
+<img width="603" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/145a119d-1a9b-4844-b027-af16c1cd9a1a">
+<img width="603" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/a4a1a4c3-7408-45c2-b0fb-071bd716139e">
 
-```
-최종 각 R2 Score에 대한 막대그래프 점 첨부 필요.
-```
+<img width="665" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2bd950a5-dc05-4320-b501-ac74b0f74dde">
 
--   결과
+<hr>
+
+-   정리
 
     -   초기 분석에서 선형 회귀 모델을 사용하여 데이터를 훈련시켰을 때, 예상보다 높은 성능을 보였습니다.  
         이를 통해 데이터의 특성과 만족도 사이의 강한 선형 관계를 확인할 수 있었습니다.  
@@ -389,7 +388,9 @@ MSE: 420.1151, RMSE: 20.4967, MSLE: 0.0010, RMSLE: 0.0314, R2: 0.7949
 
     -   이어진 과정에서는 교차 검증을 활용해 모델의 과적합 정도를 점검하였습니다.  
         과적합을 관리하기 위해 L2 규제를 적용, R2 점수를 조절하여 모델의 일반화 능력을 강화했습니다.  
-        이러한 접근은 모델이 새로운 데이터에 대해 더 잘 일반화하도록 도와주었습니다.
+        이러한 훈련 모델은 새로운 데이터에 대해 더 잘 일반화하도록 설정되었습니다.
+
+    - 또한 신뢰성과 일반화를 높이기 위해 최종적으로는 l2 규제를 사용하여 모델을 훈련시켰습니다.
 
 -   결론
 
@@ -397,4 +398,5 @@ MSE: 420.1151, RMSE: 20.4967, MSLE: 0.0010, RMSLE: 0.0314, R2: 0.7949
         분석 결과, 긍정적 요소들은 만족도 점수와 높은 양의 상관관계를 가지는 반면, 삶의 만족도에 영향을 미치는 음수적 요소들은 상대적으로 영향력이 낮았습니다.  
         이는 긍정적인 요소들이 개인의 삶의 질을 높이는 데 중요한 역할을 한다는 것을 시사합니다.
 
-    -   이러한 분석을 통해 얻은 통찰력은 개인과 조직이 웰빙을 향상시키기 위한 전략을 수립하는 데 도움이 될 수 있습니다. 또한, 이 결과는 정책 결정자나 건강 전문가들에게도 유용한 데이터를 제공하여, 보다 효과적인 건강 및 웰빙 관련 정책을 개발하는 기반을 마련할 수 있습니다.
+    -   이러한 분석을 통해 얻은 모델은 개인이 웰빙 점수를 향상시키기 위한 전략을 수립하는 데 도움이 될 수 있습니다.
+    -   또한, 이 결과는 건강 전문가들에게도 유용한 데이터를 제공하여, 보다 효과적인 건강, 웰빙 관련 공익 정책을 개발하는 기반을 마련할 수 있습니다.
