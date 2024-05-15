@@ -1,4 +1,4 @@
-# ① Regression01
+# ③ Regression03 (다차원)
 
 ## 주제: # 🏥 뉴욕주립병원 입원환자 퇴원 금액
 
@@ -10,37 +10,38 @@
 2. **데이터 분석**
 3. **데이터 전처리**
 4. **데이터 훈련**
-    - Cycle (n)반복 - 각 이미지에 대하여 링크를 걸어서 확인할 것.
+    <details>
+        <summary>Cycle</summary>   
+        <ul style='list-style-type: none;'>
+            <li><a href="#cycle01">Cycle01()</a></li>
+            <li><a href='#cycle02'>Cycle02()</a></li>
+            <li><a href='#cycle03'>Cycle03()</a></li>
+            <li><a href='#cycle04'>Cycle04()</a></li>
+            <li><a href='#cycle05'>Cycle05()</a></li>
+        </ul>
+   </details>
 5. **결론**
 
 ## 1. 가설 설정
 
 ### 가설 1: 의료 서비스 상관관계 분석
 
--   **목적**: 특정 진단 코드 또는 절차 코드에 따라 더 많은 의료 보장이 필요한 지역을 식별합니다.
--   **방법**: 다양한 지불 소스 간의 상관 관계를 분석하여, 병원이 입원 환자 방문 중 비용 효율성을 향상시킬 수 있는 자원 할당을 최적화합니다.
--   **응용**: Medicaid와 민간 보험과 같은 다양한 지불 소스 간의 패턴을 식별하여, 지역별 의료 서비스의 효율성을 높입니다.
-
-### 가설 2: 자전거 수량 예측을 통한 효율적 관리 가능성
-
 -   **퇴원 금액 상관관계**: 병원 퇴원 시 측정되는 금액과 다양한 요소들 간의 상관관계를 분석하여, 금액에 대한 회귀 분석을 수행합니다.
 -   **응용 가능성**:
     -   **진단 코드와 의료 보장**: 필요한 의료 보장이 더 많이 필요한 지역을 진단하고, 이를 통해 의료 서비스의 효율성을 높입니다.
     -   **비용 효율성과 지불 소스 분석**: 병원은 다양한 지불 소스 간의 상관 관계 분석을 통해 비용 효율성을 향상시킬 수 있습니다.
-
-## 2. 데이터 분석 결과
-
--   **예측 가능한 모델 개발**: 분석을 통해 개발된 모델은 차원 축소 후에도 높은 성능을 유지하며, 병원의 퇴원 금액을 어느 정도 예측할 수 있습니다.
--   **과적합 부재**: 과적합이 관찰되지 않아, 모델에 추가적인 규제를 적용하지 않았습니다. 이는 모델이 트리 기반 회귀 방식을 사용하여 일반화된 결과를 제공하고 있음을 의미합니다.
--   **사용된 기술**:
-    -   **트리 기반 회귀 모델**: 복잡한 데이터 구조에서 유의미한 인사이트를 추출하는 데 효과적입니다.
 
 <hr>
 
 ### 2. 데이터 분석
 
 ```
+import pandas as pd
 
+h_df = pd.read_csv('../../../datasets/p_hospital-inpatient-discharges-sparcs-de-identified-2010-1.csv', low_memory=False)
+h_df
+
+h_df.info()
 ```
 
 ### 3. 데이터 전처리
@@ -151,15 +152,15 @@ numeric_h_df
 num_h_df['Total Charges'] = np.log1p(num_h_df['Total Charges'])
 
 ```
+<img width="540" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7aa3e2e7-1be9-4180-8799-cded1a13e522">
+<img width="398" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d5bad4b0-6e48-4e06-bf09-50c0f028460a">
 
 ### 4. 데이터 훈련
 
--   Cycle01
-    1. 타겟 데이터 분포가 일정하여 차원 축소 없이 분석 진행
+<h2 id='cycle01'>Cycle01</h2>
+<p>1. 타겟 데이터 분포가 일정하여 차원 축소 없이 분석 진행</p>
 
 ```
-- 전체 그래프에 대해서 첨부
-
 # 회귀 분석 모델 사용
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
@@ -177,6 +178,7 @@ get_evaluation(y_test, prediction)
 
 MSE: 0.4996, RMSE: 0.7068, MSLE: 0.0041, RMSLE: 0.0644, R2: 0.5210
 ```
+<img width="354" alt="스크린샷 2024-05-15 오후 11 11 31" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/357d68c7-4630-4822-943c-b4659ab4b934">
 
 ```
 # 비선형 모델 사용
@@ -198,10 +200,8 @@ get_evaluation_negative(y_test, prediction)
 
 MSE: 0.3935, RMSE: 0.6273, R2: 0.6228
 ```
+<img width="225" alt="스크린샷 2024-05-15 오후 11 11 34" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/5f0e53fe-c4d4-4653-a689-63bd9a20a650">
 
-```
-- OLS 지표 첨부
-```
 
 ```
 # 트리 모델 훈련
@@ -229,10 +229,12 @@ for model in models:
     print(model.__class__.__name__)
     get_evaluation(y_test, prediction)
 ```
+<img width="546" alt="스크린샷 2024-05-15 오후 11 11 43" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3dd0457f-53ec-40cc-a9fe-0e3b2d5cde6e">
+<img width="551" alt="스크린샷 2024-05-15 오후 11 11 49" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/a5fd267a-bf7c-45d2-bc75-f93a11d139fa">
 
--   Cycle02
-    1. 모델의 공분산성을 지닌 수치 중 높은 수치에 대하여 삭제 후 확인
-    2. 모델 훈련속도의 효율을 높이기 위해 차원축소를 진행.
+<h2 id='cycle02'>Cycle02</h2>
+<p>1. 모델의 공분산성을 지닌 수치 중 높은 수치에 대하여 삭제 후 확인</p>
+<p>2. 모델 훈련속도의 효율을 높이기 위해 차원축소를 진행.</p>
 
 ```
 # 상관관계 확인
@@ -241,11 +243,7 @@ num_h_df.corr()['Total Charges'].sort_values(ascending=False)[1:]
 import seaborn as sns
 corr = num_h_df.corr()
 sns.heatmap(corr, cmap='Oranges')
-- 히트맵그래프 첨부
 
-```
-
-```
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 def get_vif(features):
@@ -256,13 +254,18 @@ def get_vif(features):
 
 get_vif(features)
 
-- 다중공선성 수치 그래프 첨부
-```
-
-```
 # 불필요 feature 제거
 c2_h_df = num_h_df.drop(labels = ['Operating Certificate Number', 'APR DRG Code', 'Health Service Area'], axis = 1)
+
 ```
+
+<h4>before</h4>
+<img width="512" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/f701ff24-270c-4292-8c26-4916fc217b57">
+<img width="242" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/afeb8d47-ed45-42cc-9df3-bd681999e1c4">
+
+<h4>after</h4>
+<img width="230" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7ed00221-7092-4635-9bc4-f394616364b1">
+<img width="250" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3facd9dd-8929-4cc2-b45a-07c78d123eb3">
 
 ```
 # 차원축소 진행
@@ -274,7 +277,7 @@ X_train, X_test, y_train, y_test = \
 train_test_split(features, targets, test_size=0.2, random_state=124)
 
 
-# 손실율 확인
+# 보존율 확인
 from sklearn.decomposition import PCA
 
 for i in range(4):
@@ -282,9 +285,10 @@ for i in range(4):
 
     pca_train = pca.fit_transform(X_train)
 
-    # 손실율
+    # 보존율
     print(pca.explained_variance_ratio_.sum())
 ```
+<img width="118" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/62101d32-56d4-4ece-a34d-30278d2e7c7d">
 
 ```
 # 차원 축소 후 최적의 모델을 사용하여 분석 진행
@@ -309,8 +313,9 @@ pipe.fit(X_train, y_train)
 prediction = pipe.predict(X_test)
 get_evaluation_negative(y_test, prediction)
 
-- 해당 결과값에 대하여 복사해서 붙여넣을 것.
 ```
+<img width="105" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3620c683-d2ee-4324-aae4-d70c03ceac4c">
+<img width="208" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/f92a5aad-62d5-4330-80fe-9ef57af55102">
 
 ```
 # train, validation 그래프에 대하여 검증
@@ -338,8 +343,6 @@ ax[1].plot([v_y_train.min(), v_y_train.max()], [v_y_train.min(), v_y_train.max()
 ax[1].set_title('Validation Data Prediction')
 plt.show()
 
-- 그래프 첨부
-
 import matplotlib.pyplot as plt
 
 prediction = pipe.predict(X_test)
@@ -349,12 +352,14 @@ fig, ax = plt.subplots()
 ax.scatter(y_test, prediction, edgecolors='red', c='orange', alpha=0.2)
 ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--')
 plt.show()
-
-- 테스트 그래프 첨부
 ```
 
--   Cycle03
-    1. 모델의 신뢰성을 높이기 위해 교차검증
+<img width="670" alt="스크린샷 2024-05-15 오후 11 16 04" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/345265cd-fbf5-4b1b-af63-edb03486e2b6">
+<img width="378" alt="스크린샷 2024-05-15 오후 11 16 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e453e9ac-7a40-426f-8363-9e5ff58f44dc">
+
+
+<h2 id='cycle03'>Cycle03</h2>
+<p>1. 모델의 신뢰성을 높이기 위해 교차검증</p>
 
 ```
 from sklearn.model_selection import cross_val_score, KFold
@@ -364,10 +369,8 @@ features, targets = c2_h_df.iloc[:,:-1], c2_h_df.iloc[:,-1]
 kf = KFold(n_splits=10, random_state=321, shuffle=True)
 scores = cross_val_score( lgb_r, features, targets , cv=kf)
 scores
-
-[0.89412771, 0.89391949, 0.89559464, 0.89305629, 0.89536895,
-       0.89599536, 0.89029503, 0.89492653, 0.89381586, 0.89115958])
 ```
+<img width="360" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/33ba3740-380f-4c96-a7da-4f5557881116">
 
 ```
 # 파이프라인 구축 후 차원 축소 후 선형 회귀 분석
@@ -415,7 +418,6 @@ get_evaluation_negative(y_test, prediction)
 ```
 
 ```
-# trian, validation 그래프 확인
 import matplotlib.pyplot as plt
 
 
@@ -439,8 +441,6 @@ ax[1].scatter(v_y_train, v_X_train_prediction, edgecolors='red', c='blue', alpha
 ax[1].plot([v_y_train.min(), v_y_train.max()], [v_y_train.min(), v_y_train.max()], 'k--')
 ax[1].set_title('Validation Data Prediction')
 plt.show()
-
-- 그래프 파임 첨부 예정
 ```
 
 ```
@@ -454,12 +454,12 @@ fig, ax = plt.subplots()
 ax.scatter(y_test, prediction, edgecolors='red', c='orange', alpha=0.2)
 ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--')
 plt.show()
-
-- 그래프 파일 첨부 예정
 ```
+<img width="667" alt="스크린샷 2024-05-15 오후 11 17 10" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/336d165c-1a65-48f9-a570-6e0d03e20ae4">
+<img width="369" alt="스크린샷 2024-05-15 오후 11 17 15" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/98016270-1533-4264-80c6-c67ab56e2079">
 
 ```
-bar 그래프 첨부 진행
+bar 그래프 첨부
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -512,13 +512,19 @@ plt.grid(True, linestyle='--', linewidth=0.5, color='gray', axis='y', zorder=0)
 # 그래프 보여주기
 plt.tight_layout()
 plt.show()
-
 ```
 
--   결과
+<img width="726" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/79124254-e101-4534-9d20-7b6e1b645d60">
 
-    분석 결과:
+<hr>
 
-    예측 가능한 모델의 개발: 분석을 통해 개발된 모델은 여러 요소들을 고려하여 병원의 퇴원 금액을 어느 정도 예측할 수 있음을 보여줍니다. 모델은 차원 축소 후에도 높은 성능을 유지하고 있습니다. 과적합의 부재: 과적합이 관찰되지 않아 모델에 추가적인 규제를 적용하지 않았습니다. 이는 모델이 훈련 데이터에 대해 지나치게 최적화되지 않고 일반화된 결과를 제공하고 있음을 의미합니다. 사용된 기술:
+- 정리
 
-    트리 기반 회귀 모델: 트리 기반의 회귀 모델을 사용하여 분석을 수행하였으며, 이 모델은 복잡한 데이터 구조에서 유의미한 인사이트를 추출하는 데 효과적이었
+    - **예측 가능한 모델 개발**: 분석을 통해 개발된 모델은 차원 축소 후에도 높은 성능을 유지하며, 병원의 퇴원 금액을 어느 정도 예측할 수 있습니다.
+    - **과적합 부재**: 과적합이 관찰되지 않아, 모델에 추가적인 규제를 적용하지 않았습니다. 이는 모델이 트리 기반 회귀 방식을 사용하여 일반화된 결과를 제공하고 있음을 판단하였습니다.
+
+- 결론
+
+    - 본 데이터셋은 매우 높은 신뢰성을 가지고 있다고 판단되며, 환자의 퇴원 금액에 대해 다양한 요소들이 높은 상관관계를 보여 주었습니다.
+    - 분석 결과, 데이터의 다양한 요소들은 높은 상관관계를 보이며, 이를 기반으로 높은 성능의 회귀 모델을 구축할 수 있었습니다.
+    - 현재 모델은 주로 의사의 면허 정보에 기반하여 구축되었으나, 진료 분과 같은 추가적인 정보가 포함된다면 모델의 일반화 능력을 더욱 향상시킬 수 있을 것으로 예상됩니다.
