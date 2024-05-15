@@ -10,9 +10,17 @@
 2. **데이터 분석**
 3. **데이터 전처리**
 4. **데이터 훈련**
-    - Cycle (3, 4)반복
-5. **결론**
-
+    <details>
+        <summary>Cycle</summary>   
+        <ul style='list-style-type: none;'>
+            <li><a href="#cycle01">Cycle01</a></li>
+            <li><a href='#cycle02'>Cycle02</a></li>
+            <li><a href='#cycle03'>Cycle03</a></li>
+            <li><a href='#cycle04'>Cycle04</a></li>
+        </ul>
+   </details>
+   
+6. **결론**
 ### 1. 가설 설정
 
 #### 가설 1: 라이프스타일 요소와 삶의 만족도 점수 간의 상관관계
@@ -80,8 +88,8 @@ pre_l_df.corr()['WORK_LIFE_BALANCE_SCORE'].sort_values(ascending=False)[1:]
 
 ### 4. 데이터 훈련
 
--   Cycle01
-    1. 별도의 훈련 없이 선형 데이터 훈련
+<h2 id="cycle01">Cycle01</h2>
+<p>1. 별도의 훈련 없이 선형 데이터 훈련</p>
 
 ```
  선형 데이터 훈련
@@ -133,9 +141,9 @@ prediction = l_r.predict(X_test)
 get_evaluation(y_test, prediction)
 ```
 
--   Cycle02
-    -   차원 축소 진행 (PCA)
-    -   선형 데이터 훈련
+<h2 id="cycle02">Cycle02</h2>
+<p>1. 차원 축소 진행 (PCA)</p>
+<p>2. 선형 데이터 훈련</p>
 
 ```
 from sklearn.model_selection import train_test_split
@@ -186,8 +194,10 @@ get_evaluation(y_test, prediction)
 MSE: 221.7647, RMSE: 14.8918, MSLE: 0.0005, RMSLE: 0.0227, R2: 0.8917
 ```
 
--   Cycle03
-    -   과적합을 판단하기 위해 교차검증 진행
+<h2 id="cycle03">Cycle03</h2>
+<p>1. 과적합을 판단하기 위해 교차검증 진행</p>
+ 
+
 
 ```
 from sklearn.model_selection import cross_val_score, KFold
@@ -242,7 +252,7 @@ MSE: 221.7647, RMSE: 14.8918, MSLE: 0.0005, RMSLE: 0.0227, R2: 0.8917
 
 -   Cycle03
     -   교차 검증 진행 시 과적합 여부를 판단하기 위한 그래프 확인
-
+    
 ```
 MSE: 226.5833, RMSE: 15.0527, MSLE: 0.0005, RMSLE: 0.0229, R2: 0.8874
 MSE: 224.9903, RMSE: 14.9997, MSLE: 0.0005, RMSLE: 0.0228, R2: 0.8904
