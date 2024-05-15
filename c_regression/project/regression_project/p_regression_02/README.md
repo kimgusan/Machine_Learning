@@ -1,6 +1,6 @@
-# ① Regression01
+# ① Regression02 (비선형)
 
-## 주제: 😊 직업적 삶과 개인 생활 전반적인 만족 점수
+## 🚴 주제: 서울시 자전거 공유 가능 수 예측.
 
     (1) 데이터 원본: ex) https://kaggle.com)
 
@@ -10,16 +10,29 @@
 2. **데이터 분석**
 3. **데이터 전처리**
 4. **데이터 훈련**
-    - Cycle (n)반복 - 각 이미지에 대하여 링크를 걸어서 확인할 것.
+    <details>
+        <summary>Cycle</summary>   
+        <ul style='list-style-type: none;'>
+            <li><a href="#cycle01">Cycle01(타겟형 데이터를 제외한 모델 훈련 진행)</a></li>
+            <li><a href='#cycle02'>Cycle02(기존 범주형 데이터를 추가한 후 훈련 진행)</a></li>
+            <li><a href='#cycle03'>Cycle03(이상치 제거 후 훈련 진행)</a></li>
+            <li><a href='#cycle04'>Cycle04(과적합의 정도를 판단히기 위해 교차검증을 진행)</a></li>
+            <li><a href='#cycle05'>Cycle05(다중공선성과 상관관계확인 후 불필요 featrue 제거)</a></li>
+            <li><a href='#cycle06'>Cycle06(powertransform 일바화 및 L2 규제 사용하여 과적합 방지 훈련 진행)</a></li>
+            <li><a href='#cycle07'>Cycle07(다중공선성과 상관관계확인 후 불필요 featrue 제거)</a></li>
+        </ul>
+   </details>
 5. **결론**
+
+<hr>
 
 ### 1. 가설 설정
 
 #### 가설 1: 요소들과 자전거 배치 개수 간의 상관관계
 
 -   **가설 내용**  
-    여러 요소들이 자전거 대여 수량에 영향을 미칠 수 있다고 가정합니다.  
-    이 요소들과 자전거 배치 개수 간의 상관관계를 분석하여 어떤 요소들이 가장 큰 영향을 미치는지 파악합니다.
+    여러 요소들이 자전거 대여 배치 수량에 영향을 미칠 수 있다고 가정합니다.  
+    이 요소들과 자전거 배치 개수 간의 상관관계를 분석하여 해당 요소들이 어느 정도의 자전거 배치 모델을 관리 할 수 있다고 가정합니다.
 
 #### 가설 2: 자전거 수량 예측을 통한 효율적 관리 가능성
 
@@ -34,15 +47,26 @@
 
 #### 모델링과 최적화
 
--   분석 결과를 바탕으로 예측 모델을 생성하고, 이 모델을 최적화하여 가설의 타당성을 평가합니다
+-   분석 결과를 바탕으로 예측 모델을 생성하고, 이 모델의 일반화를 통해 최적화를 진행합니다.
 
 <hr>
 
 ### 2. 데이터 분석
 
 ```
-# 범주형 데이터를 제외한 데이터 프레임 생성
+import pandas as pd
+
+b_df = pd.read_csv('../../datasets/p_bike.csv')
+b_df
+
 origin_b_df = b_df.copy()
+```
+<hr>
+
+### 3. 데이터 전처리
+
+```
+# 범주형 데이터를 제외한 데이터 프레임 생성
 pre_b_df = b_df.copy()
 pre_b_df = pre_b_df.drop(labels = ['Date', 'Seasons','Holiday','Functioning Day'], axis=1)
 
@@ -57,36 +81,23 @@ pre_b_df.duplicated().sum()
 # 상관관계 확인
 pre_b_df.corr()['target'].sort_values(ascending=False)[1:]
 
-- 시각화 이미지 첨부
-
-- OLS 지표 첨부
-
-
-```
-
-### 3. 데이터 전처리
-
-```
 # 중복값 확인/
 pre_l_df = pre_l_df.drop_duplicates().reset_index(drop=True)
 
 # 상관관계 확인
 pre_l_df.corr()['WORK_LIFE_BALANCE_SCORE'].sort_values(ascending=False)[1:]
-
-- 이미지 회귀선 넣기
-- corr 이미지 넣기
-- 상관관계 이미지 넗기
-- 선형 이미지 넣기
-- 양의 상관관계 음의 상관관계 넣기
-- 다중공산성 지표 넣기
-- OLS 지표 넣기
-
 ```
+<img width="451" alt="스크린샷 2024-05-15 오후 10 37 24" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/1c4f5394-80ed-4d86-b741-e1bd29a331af">
+<img width="493" alt="스크린샷 2024-05-15 오후 10 37 32" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/499ce314-f9a1-4059-87f0-f0bf0443e7c7">
+
+
+
+<hr>
 
 ### 4. 데이터 훈련
 
--   Cycle01
-    1. 타겟형 데이터를 제외한 모델 훈련 진행, r2 score 확인
+<h2 id="cycle01">Cycle01</h2>
+<p>1. 타겟형 데이터를 제외한 모델 훈련 진행, r2 score 확인</p>
 
 ```
 # 선형 데이터 확인
@@ -106,6 +117,7 @@ get_evaluation_negative(y_test, prediction)
 
 MSE: 208294.7827, RMSE: 456.3932, R2: 0.4893
 ```
+<img width="243" alt="스크린샷 2024-05-15 오후 10 39 21" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/cb7a8afc-a061-4bf5-85a3-b9b7c64b67d9">
 
 ```
 # 비선형 데이터 확인
@@ -126,6 +138,7 @@ get_evaluation_negative(y_test, prediction)
 
 MSE: 140395.6319, RMSE: 374.6941, R2: 0.6558
 ```
+<img width="240" alt="스크린샷 2024-05-15 오후 10 39 25" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2ea6d90c-382e-4e93-99c6-73d1c04ad3ca">
 
 ```
 # 훈련 데이터와 검증 데이터 그래프 확인
@@ -152,13 +165,6 @@ ax[1].scatter(v_y_train, v_X_train_prediction, edgecolors='red', c='blue', alpha
 ax[1].plot([v_y_train.min(), v_y_train.max()], [v_y_train.min(), v_y_train.max()], 'k--')
 ax[1].set_title('Validation Data Prediction')
 plt.show()
-
-
-    MSE: 128546.7844, RMSE: 358.5342, R2: 0.6928
-    MSE: 132403.7434, RMSE: 363.8733, R2: 0.6823
-
-- 훈련 데이터 검증 그래프 첨부
-
 ```
 
 ```
@@ -173,8 +179,11 @@ fig, ax = plt.subplots()
 ax.scatter(y_test, prediction, edgecolors='red', c='orange', alpha=0.2)
 ax.plot([y_train.min(), y_train.max()], [y_train.min(), y_train.max()], 'k--')
 plt.show()
-- test 검사 첨부
 ```
+<img width="675" alt="스크린샷 2024-05-15 오후 10 39 51" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/5e3f3d3f-083a-4df9-9175-ae07a2e7b8ad">
+<img width="391" alt="스크린샷 2024-05-15 오후 10 40 17" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4d1b89d9-d4d6-4994-b20e-7347e8739873">
+
+
 
 ```
 # C01
@@ -183,14 +192,8 @@ plt.show()
 - 이상치가 존재하는 것으로 확인
 ```
 
-```
-    # 훈련 결과 Cycle_01
-    prediction = l_r.predict(X_test)
-    get_evaluation(y_test, prediction)
-```
-
--   Cycle02
-    -   기존 범주형 데이터를 추가한 후 훈련 진행
+<h2 id="cycle02">Cycle02</h2>
+<p>기존 범주형 데이터를 추가한 후 훈련 진행</p>
 
 ```
 # 범주형 데이터 레이블인코딩
@@ -206,9 +209,15 @@ for column in columns:
     label_encoders[column] = encoder.classes_
 
 label_encoders
-
-- OLS 지표 첨부
 ```
+
+```
+# 상관관계 확인
+origin_b_df.corr()['target'].sort_values(ascending=False)[1:]
+```
+<img width="195" alt="스크린샷 2024-05-15 오후 10 41 30" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/034ae726-9bab-4543-8efa-1566b90f1017">
+<img width="500" alt="스크린샷 2024-05-15 오후 10 42 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/520dd237-d6db-4507-a723-14c9a6f8704c">
+
 
 ```
 # Lineare Regresssion 훈련
@@ -227,8 +236,9 @@ prediction = l_r.predict(X_test)
 get_evaluation_negative(y_test, prediction)
 
 MSE: 203459.3725, RMSE: 451.0647, R2: 0.5012
-
 ```
+
+<img width="243" alt="스크린샷 2024-05-15 오후 10 43 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3feb2402-e2a8-4480-adfa-3ec5851c589a">
 
 ```
 # 비선형모델 훈련
@@ -249,6 +259,8 @@ get_evaluation_negative(y_test, prediction)
 
 MSE: 162936.3859, RMSE: 403.6538, R2: 0.6005
 ```
+
+<img width="245" alt="스크린샷 2024-05-15 오후 10 42 39" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/115bf70e-b11d-41cd-b6b0-4705d561c11a">
 
 ```
 # 트리 모델 훈련
@@ -275,26 +287,18 @@ for model in models:
     prediction = model.predict(X_test)
     print(model.__class__.__name__)
     get_evaluation_negative(y_test, prediction)
-
-DecisionTreeRegressor
-MSE: 180518.2426, RMSE: 424.8744, R2: 0.5574
-RandomForestRegressor
-MSE: 85586.0729, RMSE: 292.5510, R2: 0.7902
-GradientBoostingRegressor
-MSE: 91201.5446, RMSE: 301.9959, R2: 0.7764
-XGBRegressor
-MSE: 86721.8676, RMSE: 294.4858, R2: 0.7874
-LGBMRegressor
-MSE: 81825.2797, RMSE: 286.0512, R2: 0.7994
 ```
 
+<img width="245" alt="스크린샷 2024-05-15 오후 10 42 39" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/115bf70e-b11d-41cd-b6b0-4705d561c11a">
+
 ```
+# C02
 범주형 데이터 추가 시 비선형 데이터 수치가 높아지는 부분 확인
 트리기반의 모델에서 훈련이 더 잘되는 것을 확인하여 트리기반의 모델 선택
 ```
 
--   Cycle03
-    -   이상치를 확인하였기 때문에 이상치 제거 후 훈련 진행
+<h2 id="cycle03">Cycle03</h2>
+<p>이상치를 확인하였기 때문에 이상치 제거 후 훈련 진행</p>
 
 ```
 # 이상치 제거를 위한 표준화 작업
@@ -340,6 +344,7 @@ get_evaluation_negative(y_test, prediction)
 
 MSE: 141044.1497, RMSE: 375.5585, R2: 0.4673
 ```
+<img width="244" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/32b007c5-2b8a-46b4-bcbd-1612e3a0c6f6">
 
 ```
 # 비선형 모델 확인
@@ -360,6 +365,8 @@ get_evaluation_negative(y_test, prediction)
 
 MSE: 125052.8676, RMSE: 353.6281, R2: 0.5277
 ```
+
+<img width="240" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/74b3609d-fad1-4389-86d6-a806bd6ced3d">
 
 ```
 # 트리 모델 확인
@@ -387,26 +394,16 @@ for model in models:
     print(model.__class__.__name__)
     get_evaluation_negative(y_test, prediction)
 
-DecisionTreeRegressor
-MSE: 124514.8276, RMSE: 352.8666, R2: 0.5297
-RandomForestRegressor
-MSE: 75376.0106, RMSE: 274.5469, R2: 0.7153
-GradientBoostingRegressor
-MSE: 83471.2015, RMSE: 288.9138, R2: 0.6847
-XGBRegressor
-MSE: 81891.1387, RMSE: 286.1663, R2: 0.6907
-LGBMRegressor
-MSE: 76253.2006, RMSE: 276.1398, R2: 0.7120
 ```
+<img width="549" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4dced628-6f61-4851-80a3-19516294b517">
 
-```
-- 트리 모델에 대현 validation train 이미지 첨부
-- test 데이터에 대한 이미지 첨부
-```
+<img width="672" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/17c5bdea-35a7-4665-b92e-1cc693132cc1">
+<img width="384" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/62c2343a-c6b0-48e7-bc08-f40f41cb5e6b">
 
--   Cycle04
-    -   과적합의 정도를 판단히기 위해 교차검증을 진행
-    -   이전 검사에서 데이터의 정도를 봤을 때 과적합이 있을 수 있다는 판다.
+
+<h2 id="cycle04">Cycle04</h2>
+<p>과적합의 정도를 판단히기 위해 교차검증을 진행</p>
+<p>이전 검사에서 데이터의 정도를 봤을 때 과적합이 있을 수 있다는 판단</p>
 
 ```
 from sklearn.model_selection import cross_val_score, KFold
@@ -416,9 +413,9 @@ features, targets = origin_b_df.iloc[:,:-1], origin_b_df.iloc[:,-1]
 kf = KFold(n_splits=10, random_state=124, shuffle=True)
 scores = cross_val_score(lgb_r, features, targets , cv=kf)
 scores
-
-- score에 대한 이미지 첨부하기
 ```
+
+<img width="356" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3c6cfa3f-85f0-43c3-a07c-70fc6460ad30">
 
 ```
 # 교차검증 및 l2 규제
@@ -438,10 +435,6 @@ lgb_r = LGBMRegressor()
 
 parameters = {
     'random_state': [321],
-    # 'min_gain_to_split' : [0.01],
-    # 'max_depth' : [10],
-    # 'num_leaves' : [31],
-    # 'reg_lambda': [100],
     'verbose': [-1]
 }
 
@@ -456,23 +449,27 @@ prediction = g_lgb_r.predict(X_test)
 get_evaluation_negative(y_test, prediction)
 
 MSE: 76253.2006, RMSE: 276.1398, R2: 0.7120
-
-- train 하고 validation그래프 첨부하기
-- test 데이터 처뭅하기
 ```
 
--   Cycle05
-    -   모델의 일반화를 위해 다중공산성과 상관관계확인ㄹ후 불필요 featrue 제거.
+<img width="669" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2a1afd3e-d843-466d-8add-09a14d6d03d0">
+<img width="377" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4c4f900e-f56b-4c8e-a7ea-5a31808a314e">
+
+
+
+
+<h2 id='cycle05'>Cycle05</h2>
+<p>모델의 일반화를 위해 다중공선성과 상관관계확인 후 불필요 featrue 제거.</p>
 
 ```
-- OLS지표 확인
-- 상관관계 확인
 origin_b_df = origin_b_df.drop(labels = ['Holiday'], axis = 1)
-- 데이터 전처리 후 OLS 지표 확인
 origin_b_df = origin_b_df.drop(labels = ['Humidity(%)', 'Wind speed (m/s)', 'Solar Radiation (MJ/m2)'], axis = 1)
-- 데이터 전처리 후 OLS 지표 확인
+```
+
+<img width="198" alt="스크린샷 2024-05-15 오후 10 51 00" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/5449dac4-43f4-4516-8100-e8e33278d2c8">
+<img width="477" alt="스크린샷 2024-05-15 오후 10 51 25" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d1dd7174-b767-4c9d-8b15-0065e57ca0e0">
 
 
+```
 from lightgbm import LGBMRegressor
 from sklearn.model_selection import train_test_split, GridSearchCV, KFold
 from sklearn.pipeline import Pipeline
@@ -505,14 +502,16 @@ get_evaluation_negative(y_test, prediction)
 
 
 MSE: 73783.6514, RMSE: 271.6315, R2: 0.7213
-
-- train, validation data 그래프 확인
-- test 데이터 확인
 ```
 
--   Cycle06
-    -   각 수치형 데이터에 대하여 powertransform 을 사용하여 일반화 강화
-    -   Ridge 규제를 통해 과적함을 추가적으로 방지
+<img width="677" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/fd40add0-21dd-4545-b6bc-c9930a04798d">
+<img width="391" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/6a045345-f947-47aa-8e35-7c7680b61d83">
+
+
+
+<h2 id='cycle06'>Cycle06</h2>
+<p>각 수치형 데이터에 대하여 powertransform 을 사용하여 일반화 강화</p>
+<p>Ridge 규제를 통해 과적함을 추가적으로 방지</p>
 
 ```
 from sklearn.preprocessing import PowerTransformer
@@ -527,7 +526,6 @@ for column in columns:
 
 power_b_df
 
-- OLS 지표 첨부
 
 - 데이터 전처리
 power_b_df = power_b_df.drop(labels = ['Wind speed (m/s)'], axis = 1)
@@ -564,23 +562,18 @@ get_evaluation_negative(y_test, prediction)
 
 
 MSE: 88352.2831, RMSE: 297.2411, R2: 0.7834
-
-
-- train, validation 그래프 처부
-- test 데이터 그래프 첨부
 ```
 
--   Cycle07
-    -   수치폭을 더 좁힐 수 있는 지 추가 전처리 진행
-    -   불필요 feature 삭제.
+<img width="668" alt="스크린샷 2024-05-15 오후 10 54 16" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/68c45d1c-bdb7-4b96-addd-f8636b4549f1">
+<img width="411" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/cc6f7c90-9e70-4001-a682-463e180d117a">
+
+
+<h2 id='cycle07'>Cycle07</h2>
+<p>수치폭을 더 좁힐 수 있는 지 추가 전처리 진행</p>
+<p>불필요 feature 삭제.</p>
 
 ```
-    - 상관관계 수치 그래프 확인
-    - OLS 지표 확인
-    - 다중공선성 지표 확인
-
     power_b_df = power_b_df.drop(labels = ['Snowfall (cm)'], axis=1)
-    - OLS 지표 확인
 
     from lightgbm import LGBMRegressor
     from sklearn.model_selection import train_test_split, GridSearchCV, KFold
@@ -613,12 +606,11 @@ MSE: 88352.2831, RMSE: 297.2411, R2: 0.7834
     get_evaluation_negative(y_test, prediction)
 
     MSE: 88007.3417, RMSE: 296.6603, R2: 0.7842
-
-
-
+```
+<img width="191" alt="스크린샷 2024-05-15 오후 10 56 11" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/1d4ec3f0-4180-487a-9b19-7b78e66669f3">
+<img width="500" alt="스크린샷 2024-05-15 오후 10 56 27" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/152390bd-2e9b-4934-92b4-1f31707f47f7">
 
 ```
-
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -655,8 +647,6 @@ plt.show()
 MSE: 69007.0353, RMSE: 262.6919, R2: 0.8351
 MSE: 99120.6772, RMSE: 314.8344, R2: 0.7621
 
--   train, validation 그래프 첨부
-
 import matplotlib.pyplot as plt
 
 prediction = g_lgb_r.predict(X_test)
@@ -666,29 +656,25 @@ fig, ax = plt.subplots()
 ax.scatter(y_test, prediction, edgecolors='red', c='orange', alpha=0.2)
 ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--')
 plt.show()
-최종 각 R2 Score에 대한 막대그래프 점 첨부 필요.
-
-```
-- 시각화 그래프 사용하여 논리적으로 설명
-- 시각화 그래프를 팀원중 본 사람이 없어 피트백 불가
 ```
 
--   결과
 
-        - 가설
+<img width="664" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/8a4f0d24-c7f6-49fa-92bd-6a9236670b8f">
+<img width="380" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/abc9c46a-f193-4d42-8b32-ff07234be844">
 
-    목적: 자전거 대여 서비스에서 자전거 배치 개수에 영향을 미치는 주요 요소들을 식별하고 이해하기 위해 데이터를 분석합니다.
+<img width="735" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ad167a09-729a-4da8-8d51-d4efaf730d50">
+<img width="730" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/f4b05b04-870f-4e6c-bff0-6f2b98515aff">
 
--   주요 내용:  
-    여러 요소들이 자전거 대여 수량에 영향을 미칠 수 있다고 가정합니다.
-    이 요소들과 자전거 배치 개수 간의 상관관계를 분석하여 어떤 요소들이 가장 큰 영향을 미치는지 파악합니다.
-    예측 모델을 통해 공유할 수 있는 자전거의 수를 예측함으로써, 자전거 공유 회사가 자전거 수를 보다 효과적으로 계획하고 관리할 수 있을 것으로 기대합니다.
+
+
+-   정리
+
+    - 과적합 문제 식별: Validation 그래프를 통해 Train 데이터와의 성능 차이를 확인했습니다. 이를 통해 모델에 과적합이 있음을 판단했습니다.
+    - 모델 일반화 개선: 다중공선성 검사, Power Transform 적용, 상관관계 분석을 통해 모델의 일반화를 도모했습니다. 이러한 분석을 통해 모델이 더욱 강건해질 수 있도록 조치를 취했습니다.
+    - L2 규제 적용: 교차 검증을 통해 L2 규제를 적용함으로써 과적합을 방지하였습니다. 이를 통해 검증 데이터에서의 모델 성능을 개선했습니다.
 
 -   결론
-
--   과적합 문제 식별: Validation 그래프를 통해 Train 데이터와의 성능 차이를 확인했습니다. 이를 통해 모델에 과적합이 있음을 판단했습니다.
--   모델 일반화 개선: 다중공선성 검사, Power Transform 적용, 상관관계 분석을 통해 모델의 일반화를 도모했습니다. 이러한 분석을 통해 모델이 더욱 강건해질 수 있도록 조치를 취했습니다.
-    L2 규제 적용: 교차 검증을 통해 L2 규제를 적용함으로써 과적합을 방지하였습니다. 이를 통해 검증 데이터에서의 모델 성능을 개선했습니다.
-
--   종합적인 관점
-    이 프로젝트를 통해 자전거 대여 수량에 영향을 미치는 주요 요소들을 파악하고, 이를 기반으로 효과적인 자전거 배치 전략을 수립할 수 있게 되었습니다. 모델의 과적합 문제를 식별하고 이를 개선하는 방법을 적용함으로써, 모델의 신뢰성과 일반화 능력을 높였습니다. 이 결과는 자전거 공유 회사에게 자전거 배치 계획을 더 잘 수립하고, 고객 수요를 보다 효과적으로 충족시킬 수 있는 방안을 제공합니다.
+  
+    - 이 프로젝트를 통해 자전거 대여 수량에 영향을 미치는 주요 요소들을 파악하고, 이를 기반으로 효과적인 자전거 배치에 대하여 분석할 수 있는 모델을 수립할 수 있게 되었습니다.
+    - 모델의 과적합 문제를 식별하고 이를 개선하는 방법을 적용함으로써, 모델의 신뢰성과 일반화 능력을 높였습니다.
+    - 이 결과는 자전거 공유 회사에게 자전거 배치 계획을 더 잘 수립하고, 고객의 불편성을 해소하며 회원 유치에 도움이 될 것으로 사료됩니다.
