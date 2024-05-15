@@ -1,4 +1,4 @@
-<img width="373" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/45332bfb-8e0b-4a29-866e-9f89a109fa93"># ① Regression01
+# ① Regression01
 
 ## 주제: 😊 직업적 삶과 개인 생활 전반적인 만족 점수
 
