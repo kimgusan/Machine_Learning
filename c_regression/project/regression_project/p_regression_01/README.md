@@ -2,7 +2,7 @@
 
 ## 주제: 😊 직업적 삶과 개인 생활 전반적인 만족 점수
 
-    (1) 데이터 원본: https://kaggle.com)**https://www.kaggle.com/datasets/ydalat/lifestyle-and-wellbeing-data/data
+    (1) 데이터 원본: https://www.kaggle.com/datasets/ydalat/lifestyle-and-wellbeing-data/data
 
 ### 목차
 
