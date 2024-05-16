@@ -148,7 +148,7 @@ get_evaluation(y_test, prediction, lg, X_test)
 
 
 <h2 id='cycle03'>Cycle03</h2>
-<p>1. 모델의 수치들에 대하여 표준화를 위해 Power transform 진행</p>
+<p>1. 모델의 수치들에 대하여 정규화를 위해 Power transform 진행</p>
 
 <details>
     <summary>Click Cycle03_code</summary>   
