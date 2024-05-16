@@ -82,14 +82,37 @@ pre_l_df = pre_l_df.drop_duplicates().reset_index(drop=True)
 # 상관관계 확인
 pre_l_df.corr()['WORK_LIFE_BALANCE_SCORE'].sort_values(ascending=False)[1:]
 ```
+<img width="483" alt="스크린샷 2024-05-15 오후 4 48 52" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2ba37e31-ec58-4577-9d4d-e967b593010c">
+
+```
+# 전체 feature에 대하여 다중공선성 확인
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+
+def get_vif(features):
+    vif = pd.DataFrame()
+    vif['vif_score'] = [variance_inflation_factor(features.values, i) for i in range(features.shape[1])]
+    vif['feature'] = features.columns
+    return vif
+
+get_vif(pre_l_df.iloc[:, :-1])
+```
+<img width="188" alt="스크린샷 2024-05-15 오후 4 49 26" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/781ddef3-aab6-423a-b099-32f54483e279">
+
+```
+from statsmodels.api import OLS
+
+model = OLS(pre_l_df.iloc[:, -1], pre_l_df.iloc[:, :-1])
+
+print(model.fit().summary())
+```
+
+<img width="525" alt="스크린샷 2024-05-15 오후 4 49 16" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d7747240-e778-4df8-8ae0-19d4bbda1fbc">
 
 </details>
 
-<img width="361" alt="스크린샷 2024-05-15 오후 4 45 18" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/62d1c572-2027-4233-8cff-c3ca01e49c4f">
-<img width="483" alt="스크린샷 2024-05-15 오후 4 48 52" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2ba37e31-ec58-4577-9d4d-e967b593010c">
+
 <img width="595" alt="스크린샷 2024-05-15 오후 4 49 00" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/aa2b9580-05a7-48af-8c0a-b257b2938f92">
-<img width="188" alt="스크린샷 2024-05-15 오후 4 49 26" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/781ddef3-aab6-423a-b099-32f54483e279">
-<img width="525" alt="스크린샷 2024-05-15 오후 4 49 16" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d7747240-e778-4df8-8ae0-19d4bbda1fbc">
+
 
 <hr>
 
