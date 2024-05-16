@@ -2,7 +2,7 @@
 
 ## 🚴 주제: 서울시 자전거 공유 가능 수 예측.
 
-    (1) 데이터 원본: [https://kaggle.com)](https://www.kaggle.com/datasets/ahmadialkhatib/bike-sharing-demand)
+    (1) 데이터 원본: https://www.kaggle.com/datasets/ahmadialkhatib/bike-sharing-demand
 
 ### 목차
 
