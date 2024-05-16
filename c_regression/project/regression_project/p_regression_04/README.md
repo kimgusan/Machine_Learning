@@ -248,7 +248,8 @@ grid_lgb.fit(X_train, y_train)
 
 </details>
 
-<img width="559" alt="스크린샷 2024-05-16 오전 12 32 51" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/b1ee56ae-9c87-4635-8041-e56df1eed66d">
+
+<img width="558" alt="스크린샷 2024-05-16 오후 1 55 29" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/c593f7ef-8bd1-46bf-b9c6-fba363a283d0">
 
 
 <h2 id='cycle05'>Cycle05</h2>
@@ -260,10 +261,10 @@ grid_lgb.fit(X_train, y_train)
 ```
 pre_s_df = p_u_s_df.drop(labels=['b'], axis = 1)
 pre_s_df
-
-pre_s_df = p_u_s_df.drop(labels=['b'], axis = 1)
-pre_s_df
 ```
+<img width="525" alt="스크린샷 2024-05-16 오후 1 57 22" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/913c7215-b955-4bb8-8327-0fb5317eb462">
+
+
 
 ```
 ## from sklearn.linear_model import LogisticRegression
@@ -296,7 +297,7 @@ grid_lgb.fit(X_train, y_train)
 
 </details>
 
-<img width="568" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e8d76951-f6ce-4bbf-8dcc-d1489ed1a43f">
+<img width="578" alt="스크린샷 2024-05-16 오후 1 56 48" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/5077ce15-edf0-4d01-8bbb-505b0fafaa5d">
 
 
 <h2 id='cycle06'>Cycle06</h2>
