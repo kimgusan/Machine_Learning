@@ -108,8 +108,22 @@ print(model.fit().summary())
 
 <img width="525" alt="스크린샷 2024-05-15 오후 4 49 16" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d7747240-e778-4df8-8ae0-19d4bbda1fbc">
 
-</details>
+```
+# 막대 그래프 그리기 준비
 
+plot_data = corr_rounded[['features', 'WORK_LIFE_BALANCE_SCORE']].iloc[:-1]  # 'WORK_LIFE_BALANCE_SCORE'은 예시, 해당 열 이름 확인 필요
+
+plt.figure(figsize=(10, 6))
+
+# 상관 계수를 기반으로 막대 그래프 그리기
+plot = sns.barplot(data=plot_data, x='features', y="WORK_LIFE_BALANCE_SCORE")
+plot.set_ylabel("Correlation With Work-Life Balance")
+plot.set_xticklabels(plot.get_xticklabels(), rotation=90)  # 열 이름을 직접 사용
+
+plt.show()
+```
+
+</details>
 
 <img width="595" alt="스크린샷 2024-05-15 오후 4 49 00" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/aa2b9580-05a7-48af-8c0a-b257b2938f92">
 
