@@ -18,7 +18,7 @@
             <li><a href='#cycle03'>Cycle03(분표를 맞추기위한 power transform 사용 후 훈련 진행)</a></li>
             <li><a href='#cycle04'>Cycle04(교차검증 후 훈련 진행)</a></li>
             <li><a href='#cycle05'>Cycle05(다중공선성을 가진 feature 제거 후 훈련 진행)</a></li>
-            <li><a href='#cycle06'>Cycle06(epochs 를 조절한 손실값 확인 후 모델 훈련 진행 및 임계치를 조절한 모델 최적화)</a></li>
+            <li><a href='#cycle06'>Cycle06(epochs 를 조절한 손실값 확인 후 기존 훈련 모델을 사용하여 임계치를 조절한 모델 최적화)</a></li>
         </ul>
    </details>
 5. **결론**
@@ -300,7 +300,8 @@ grid_lgb.fit(X_train, y_train)
 
 
 <h2 id='cycle06'>Cycle06</h2>
-<p>1. 하이퍼파라미터 조정이 명확하지 않아 가설과 학습률을 이용한 손실함수 선언.</p>
+<p>1. 하이퍼파라미터 조정이 명확하지 않아 가설과 학습률을 이용한 손실함수 확인.</p>
+<p>2. epochs 를 조절한 손실값 확인 후 기존 훈련 모델을 사용하여 임계치를 조절한 모델 최적화.</p>
 
 <details>
     <summary>Click Cycle06_code</summary>   
