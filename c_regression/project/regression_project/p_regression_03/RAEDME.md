@@ -154,12 +154,11 @@ num_h_df['Total Charges'] = np.log1p(num_h_df['Total Charges'])
 
 ```
 
-<img width="540" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7aa3e2e7-1be9-4180-8799-cded1a13e522">
+
 
 </details>
 
-    
-
+<img width="540" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7aa3e2e7-1be9-4180-8799-cded1a13e522">
 <img width="398" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d5bad4b0-6e48-4e06-bf09-50c0f028460a">
 
 ### 4. 데이터 훈련
@@ -242,7 +241,7 @@ for model in models:
 ```
 </details>
 
-<img width="546" alt="스크린샷 2024-05-15 오후 11 11 43" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3dd0457f-53ec-40cc-a9fe-0e3b2d5cde6e">
+
 <img width="551" alt="스크린샷 2024-05-15 오후 11 11 49" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/a5fd267a-bf7c-45d2-bc75-f93a11d139fa">
 
     
@@ -306,6 +305,7 @@ for i in range(4):
     print(pca.explained_variance_ratio_.sum())
 ```
 <img width="118" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/62101d32-56d4-4ece-a34d-30278d2e7c7d">
+<img width="546" alt="스크린샷 2024-05-15 오후 11 11 43" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3dd0457f-53ec-40cc-a9fe-0e3b2d5cde6e">
 
 ```
 # 차원 축소 후 최적의 모델을 사용하여 분석 진행
@@ -371,11 +371,10 @@ ax.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'k--')
 plt.show()
 ```
 
-<img width="670" alt="스크린샷 2024-05-15 오후 11 16 04" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/345265cd-fbf5-4b1b-af63-edb03486e2b6">
-<img width="378" alt="스크린샷 2024-05-15 오후 11 16 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e453e9ac-7a40-426f-8363-9e5ff58f44dc">
-
 </details>
 
+<img width="670" alt="스크린샷 2024-05-15 오후 11 16 04" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/345265cd-fbf5-4b1b-af63-edb03486e2b6">
+<img width="378" alt="스크린샷 2024-05-15 오후 11 16 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e453e9ac-7a40-426f-8363-9e5ff58f44dc">
 
 <h2 id='cycle03'>Cycle03</h2>
 <p>1. 모델의 신뢰성을 높이기 위해 교차검증</p>
