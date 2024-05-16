@@ -154,10 +154,12 @@ num_h_df['Total Charges'] = np.log1p(num_h_df['Total Charges'])
 
 ```
 
+<img width="540" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7aa3e2e7-1be9-4180-8799-cded1a13e522">
+
 </details>
 
     
-<img width="540" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7aa3e2e7-1be9-4180-8799-cded1a13e522">
+
 <img width="398" alt="image" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d5bad4b0-6e48-4e06-bf09-50c0f028460a">
 
 ### 4. 데이터 훈련
