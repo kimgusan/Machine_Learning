@@ -2,7 +2,7 @@
 
 ## 주제: # ☄️ 주제: 쌍성 데이터 확인
 
-    (1) 데이터 원본: [ex) https://kaggle.com)](https://www.kaggle.com/datasets/austinhinkel/identify-binary-stars-in-gaia-dr3-data)
+    (1) 데이터 원본: https://www.kaggle.com/datasets/austinhinkel/identify-binary-stars-in-gaia-dr3-data
 
 ### 목차
 
