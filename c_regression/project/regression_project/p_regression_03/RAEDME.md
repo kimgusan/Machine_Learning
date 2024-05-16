@@ -2,7 +2,7 @@
 
 ## 주제: # 🏥 뉴욕주립병원 입원환자 퇴원 금액
 
-    (1) 데이터 원본: [https://kaggle.com)](https://www.kaggle.com/datasets/thedevastator/2010-new-york-state-hospital-inpatient-discharge/data)
+    (1) 데이터 원본: https://www.kaggle.com/datasets/thedevastator/2010-new-york-state-hospital-inpatient-discharge/data
 
 ### 목차
 
