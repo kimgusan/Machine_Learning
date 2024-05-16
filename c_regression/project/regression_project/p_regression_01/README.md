@@ -54,17 +54,11 @@
 ```
 # 데이터 셋 정보 확인.
 pre_l_df = l_df.copy()
-pre_l_df.info()
 
 # 결측치 확인.
 pre_l_df.isna().sum()
 
-# daliy stress 이상값 삭제.
-pre_l_df = pre_l_df[pre_l_df['DAILY_STRESS'] != '1/1/00']
-pre_l_df = pre_l_df.reset_index(drop=True)
-pre_l_df
-
-# 데이탸 셋 정보 확인.
+# 데이터 셋 정보 확인.
 pre_l_df.info()
 
 ```
@@ -76,7 +70,14 @@ pre_l_df.info()
 ### 3. 데이터 전처리
 
 ```
-# 중복값 확인/
+
+# daliy stress 이상값 삭제.
+pre_l_df = pre_l_df[pre_l_df['DAILY_STRESS'] != '1/1/00']
+pre_l_df = pre_l_df.reset_index(drop=True)
+pre_l_df
+
+
+# 중복값 확인
 pre_l_df = pre_l_df.drop_duplicates().reset_index(drop=True)
 
 # 상관관계 확인
