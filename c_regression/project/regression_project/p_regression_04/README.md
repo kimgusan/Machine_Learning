@@ -15,7 +15,7 @@
         <ul style='list-style-type: none;'>
             <li><a href="#cycle01">Cycle01(로지스틱 회귀 훈련 진행)</a></li>
             <li><a href='#cycle02'>Cycle02(언더샘플링 기법 사용 후 훈련 진행)</a></li>
-            <li><a href='#cycle03'>Cycle03(분표를 맞추기위한 power transform 사용 후 훈련 진행)</a></li>
+            <li><a href='#cycle03'>Cycle03(분포를 맞추기위한 power transform 사용 후 훈련 진행)</a></li>
             <li><a href='#cycle04'>Cycle04(교차검증 후 훈련 진행)</a></li>
             <li><a href='#cycle05'>Cycle05(다중공선성을 가진 feature 제거 후 훈련 진행)</a></li>
             <li><a href='#cycle06'>Cycle06(epochs 를 조절한 손실값 확인 후 기존 훈련 모델을 사용하여 임계치를 조절한 모델 최적화)</a></li>
