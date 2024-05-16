@@ -1,6 +1,6 @@
 # ④ Regression04 (logistic)
 
-## 주제: # ☄️ 주제: 쌍성 데이터 확인
+## ☄️ 주제: 쌍성 데이터 확인
 
     (1) 데이터 원본: https://www.kaggle.com/datasets/austinhinkel/identify-binary-stars-in-gaia-dr3-data
 
