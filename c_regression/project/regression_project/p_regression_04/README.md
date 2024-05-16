@@ -640,10 +640,11 @@ plt.show()
 <img width="405" alt="스크린샷 2024-05-16 오전 12 35 12" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/fd72fe7c-ef95-455f-bd62-365713fafe1a">
 <img width="419" alt="스크린샷 2024-05-16 오전 12 35 47" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/daa0c57c-6c5e-4261-b7aa-77fa1e3ef533">
 </p>
-<img width="460" alt="스크린샷 2024-05-16 오전 12 36 45" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2da4e38a-c3d4-45a2-bb69-a67c5e3713f0">
-<img width="385" alt="스크린샷 2024-05-16 오전 12 37 26" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d6003f0b-33d3-4060-9b96-384b5e6858ca">
-<img width="460" alt="스크린샷 2024-05-16 오전 12 44 57" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/bf4d0818-90b0-496f-adff-ea91d17ae9ba">
-<img width="737" alt="스크린샷 2024-05-16 오전 12 37 45" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2f9394c8-c624-4b32-99f3-1c70109aaee6">
+<img width="400" alt="스크린샷 2024-05-16 오전 12 36 45" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2da4e38a-c3d4-45a2-bb69-a67c5e3713f0">
+<img width="400" alt="스크린샷 2024-05-16 오후 2 09 22" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e4f717cd-c993-43c9-b121-6a850304341a">
+<img width="695" alt="스크린샷 2024-05-16 오후 2 10 37" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ce55fe0c-d52d-4e16-b949-88d100f8f690">
+<img width="735" alt="스크린샷 2024-05-16 오후 2 09 31" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/371b7cc5-ced0-4c24-95f5-15d855b02f03">
+
 
 
 <hr>
