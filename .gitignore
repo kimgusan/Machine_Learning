@@ -23,3 +23,4 @@ c_regression/datasets/
 d_dimension_reduction/datasets/
 b_classifier/datasets/
 c_regression/project/**/*.csv
+z_pythonProject/**/*.csv
