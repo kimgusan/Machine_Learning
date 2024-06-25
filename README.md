@@ -765,15 +765,11 @@ GridSearchCV
             <td>1</td>
         </tr>
     </table>  
-    <div style="width: 400px">
-        <img src="../b_classifier/images/logistic_regression_train.png">
-        <br><br><br>
-        <img src="../b_classifier/images/linear_combination.png">
-    </div>
 </div>
 
-<img width="359" alt="스크린샷 2024-06-25 오후 5 20 31" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/6ff26462-f41b-4e6a-9f27-f484e5125164">
+
 <img width="463" alt="스크린샷 2024-06-25 오후 5 20 56" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ea0e95bd-6fa0-44d3-bc40-960df00181b4">
+
 <img width="412" alt="스크린샷 2024-06-25 오후 5 21 37" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d53bc3f3-477e-4097-a060-e48ee2151b3b">
 
 
