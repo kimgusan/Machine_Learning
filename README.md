@@ -1,4 +1,15 @@
-# 개요
+# 목록
+<details>
+    <summary> List
+        <ul>
+            <li><a href="#intro">1. Intro</a></li>
+            <li><a href="#classifier">2. Classifier</a></li>
+            <li><a href="#regression">3. Regression</a></li>
+        </ul>
+    </summary>
+</details>
+
+<h1 id=intro>개요</h1>
 
 ### AI (Artificial Intelligence)
 
@@ -65,9 +76,10 @@
 
 <hr>
 <br>
-<br>
 
-### 분류 (Classifier)
+
+
+<h2 id=classifier>분류 (Classifier)</h2>
 
 -   대표적인 지도학습 방법 중 하나이며, 다양한 문제와 정답을 학습한 뒤 별도의 테스트에서 정답을 예측한다.
 -   주어진 문제와 정답을 먼저 학습한 뒤 새로운 문제에 대한 정답을 예측하는 방식이다.
