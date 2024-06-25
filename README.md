@@ -1,4 +1,4 @@
-<img width="464" alt="스크린샷 2024-06-25 오후 5 16 52" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/1ee80d0b-c2b2-41bf-871b-b748e746a07c"># 목록
+# 목록
 <details>
     <summary> List
         <ul>
@@ -403,6 +403,7 @@ GridSearchCV
 <img width="389" alt="스크린샷 2024-06-25 오후 4 49 31" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2f508882-282f-4592-a028-9bbc38b99a6c">
 
 <img width="784" alt="스크린샷 2024-04-11 오후 11 02 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d5fe9c21-a88a-40af-952b-ec238ccf688a">
+
 <img width="200px" alt="스크린샷 2024-04-11 오후 11 02 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/81545834-af6e-4615-bba7-0d887492ad83">
 
 ---
