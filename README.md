@@ -1,4 +1,4 @@
-# 목록
+<img width="464" alt="스크린샷 2024-06-25 오후 5 16 52" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/1ee80d0b-c2b2-41bf-871b-b748e746a07c"># 목록
 <details>
     <summary> List
         <ul>
@@ -208,14 +208,16 @@
 -   불균형항 데이터 세트에서 높은 비율을 차지하던 클래스의 데이터 수를 줄임으로써 데이터 불균형을 해소한다.
 -   학습에 사용되는 전체 데이터 수를 급격하게 감소시켜 오히려 성능이 떨어질 수 있다.
 
-# 이미지 추가
+<img width="317" alt="스크린샷 2024-06-25 오후 5 24 52" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3dda189d-c131-4696-a82a-5698cc66e23f">
+
 
 ### 오버 샘플링 (Over sampling)
 
 -   불균형항 데이터 세트에서 낮은 비율을 차지하던 클래스의 데이터 수를 늘림으로써 데이터 불균형을 해소한다.
 -   오버 샘플링의 대표적인 방법에는 SMOTE(Syntheitc Minority Over-sampling Technique)가 있다.
 
-# 이미지 추가
+<img width="326" alt="스크린샷 2024-06-25 오후 5 24 55" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/60912cb2-3e06-4600-90a1-0d3f158ea800">
+
 
 #### SMOTE (Syntheitc Minority Over-sampling Technique)
 
@@ -226,7 +228,7 @@
 -   오버 샘플링을 하게 되면 양성으로 예측하는 비율이 높아지기 때문에 정밀도가 감소하고 재현율이 증가한다.
 -   오버 샘플링을 정확히 수행하기 위해서는 category 타입을 사용하는 것보다 직접 인코딩해주는 것이 좋다.
 
-# 이미지 추가
+<img width="497" alt="스크린샷 2024-06-25 오후 5 24 59" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ddd65cd9-d4d5-4e0d-969c-8eee940e82aa">
 
 <hr>
 
@@ -398,7 +400,7 @@ GridSearchCV
 -   모델이 양성과 음성을 얼마나 잘 분류하는지 시각화할 수 있다.
 -   보통 F1 Score가 0.7 이상일 경우 좋은 모델이라 간주한다.
 
-# 이미지 추가할 것!
+<img width="389" alt="스크린샷 2024-06-25 오후 4 49 31" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2f508882-282f-4592-a028-9bbc38b99a6c">
 
 <img width="784" alt="스크린샷 2024-04-11 오후 11 02 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d5fe9c21-a88a-40af-952b-ec238ccf688a">
 <img width="200px" alt="스크린샷 2024-04-11 오후 11 02 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/81545834-af6e-4615-bba7-0d887492ad83">
@@ -443,11 +445,8 @@ GridSearchCV
 > 단, 검사 대상인 질병의 유병률(사전 확률, 기존 사건들의 확률)을 알고 있어야 한다.  
 > 전세계 인구 중 10%의 사람들이 질병 A를 앓는다고 가정한다.
 
-# 이미지 추가
-
-# 이미지 추가
-
-# 이미지 추가
+<img width="497" alt="스크린샷 2024-06-25 오후 5 01 01" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/8254a71c-20c3-4454-820a-113602cb1e99">
+<img width="162" alt="스크린샷 2024-06-25 오후 5 01 05" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/78c99cde-5524-4450-8ac0-943dd07c8f4e">
 
 > 🚩결과: 약 30.8%
 
@@ -462,7 +461,7 @@ GridSearchCV
 -   빠르고 정확하고 간단한 분류 방법이지만, 실제 데이터에서 모든 feature가
 -   독립적인 경우는 드물기 때문에 실생활에 적용하기 어려운 점이 있다.
 
-# 이미지 추가
+<img width="300" alt="스크린샷 2024-06-25 오후 5 02 31" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/871dd28e-59f7-4ba4-a0be-af77bb5edfc2">
 
 \*\* 다중행렬
 
@@ -477,7 +476,8 @@ GridSearchCV
 -   새로운 데이터가 경계를 기준으로 어떤 방향에 잡히는지를 확인함으로써 해당 데이터의 카테고리를 예측할 수 있다.
 -   데이터가 어느 카테고리에 속할 지 판단하기 위해 가장 적절한 경계인 결정 경계를 찾는 선형 모델이다.
 
-# 이미지 추가
+<img width="302" alt="스크린샷 2024-06-25 오후 5 04 04" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2ebd3ff8-08b2-4fb3-981a-c1b406027256">
+
 
 #### 서포트 벡터 (Support Vector)
 
@@ -493,7 +493,7 @@ GridSearchCV
     즉, 2차원 공간에서는 결정 경계는 선으로 결정되고,  
     고차원에서는 결정 경계는 선이 아닌 평면 이상의 도형이며, 이를 "초평면(Hyperplane)"이라고 부른다.
 
-# 이미지 추가
+<img width="299" alt="스크린샷 2024-06-25 오후 5 04 16" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/8093c699-deae-4271-8fbf-85d22054ddca">
 
 #### 하드 마진(Hard margin)
 
@@ -503,14 +503,16 @@ GridSearchCV
 -   C를 낮추면 일을 덜 하게 하는 것이고, C를 높이면 일을 더 해서 섬세하게 찾아낸다.
 -   C가 너무 낮으면 underfitting될 가능성이 커지고, C가 너무 높으면 overfitting이 발생할 수 있다.
 
-# 이미지 추가
+<img width="268" alt="스크린샷 2024-06-25 오후 5 04 27" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4658030f-933c-4f95-a626-22166c1cce18">
+
 
 #### 소프트 마진(Soft margin)
 
 -   이상치를 허용해서 일부 데이터를 잘못 분류하더라도 나머지 데이터를 더욱 잘 분류해주는 방법이다.
 -   이상치 허용으로 인해 데이터의 패턴을 잘 감지 못하는 문제점이 생길 수 있다.
 
-# 이미지 추가
+<img width="419" alt="스크린샷 2024-06-25 오후 5 04 37" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/29a38893-f128-4c2a-90dc-dca66eb27e85">
+
 
 > 🎆 정리  
 > 서포트 벡터 머신 알고리즘을 적용한 SVC 모델의 하이퍼파라미터는 Regularization cost, C에 값을 전달하여 ξ(패널티)를 조절할 수 있다.
@@ -524,14 +526,14 @@ GridSearchCV
     하지만 더 잘 분류하기 위해서는 차원을 높여야 한다. 이를 고차원 매핑이라고 하고 이 때 커널 트릭을 사용한다.
 -   저차원으로 해결하기 어려운 문제들을 고차원으로 변환시켜서 문제를 해결할 때 사용한다.
 
-# 이미지 추가
+<img width="460" alt="스크린샷 2024-06-25 오후 5 04 54" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7dfa5b67-04c5-4516-818a-d718a2710e2d">
 
 -   비선형 데이터일 때 RBF 커널을 사용하고, 선형 데이터일 때 linear 커널을 사용하는 것이 효과적이다.
 -   RBF 커널을 사용하게 되면, gamma 하이퍼 파라미터를 조정할 수 있으며, 이는 데이터 포인터들의 영향 범위를 결정한다.
 -   gamma가 클수록 하나의 벡터 영향력 거리가 짧아지고, gamma가 작을 수록 거리가 길어진다.
 -   즉, gamma가 클수록 표준편차가 낮아진다. gamma가 너무 작으면 과소적합될 가능성이 크고, 너무 높으면 과적합의 위험성이 있다.
 
-# 이미지 추가
+<img width="507" alt="스크린샷 2024-06-25 오후 5 05 00" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/27851de9-e3db-4a57-871c-2dc2ef8adedf">
 
 ---
 
@@ -569,7 +571,8 @@ GridSearchCV
 -   경우의 수로 제거해가며 학습을 재수행하기 때문에 시간이 오래 걸린다.
 -   몇 개의 feature를 추출해야 할 지 직접 정의해야 하는 것이 단점이다.
 
-# 이미지 추가
+<img width="309" alt="스크린샷 2024-06-25 오후 5 10 30" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/b38faa1e-d0c6-418f-891a-b7eccc36e3df">
+
 
 #### Recursive Feature Elimination Cross Validation (RFECV)
 
@@ -577,7 +580,7 @@ GridSearchCV
 -   각 feature마다 Cross Validation을 진행하여 각기 다른 성능을 도출한다.
 -   도출된 성능 수치를 평균 내어 가장 높은 성능을 발휘하는 feature들을 선택한다.
 
-# 이미지 추가
+스크린샷 2024-06-25 오후 5.10.50
 
 #### Permutation Importance
 
@@ -586,9 +589,9 @@ GridSearchCV
 -   중요도를 판단하려는 feature의 요소를 noise로 만들어서 전과 후를 비교한 뒤 중요도를 판단한다. (noise: 이상치)
 -   암의의 feature를 noise로 만들었을 때 성능이 떨어진 정도로 feature importance를 판별할 수 있다.
 
-# 이미지 추가
+<img width="438" alt="스크린샷 2024-06-25 오후 5 11 25" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2fb2ba4f-7c85-4fba-9abb-7c61f5d4e542">
+<img width="444" alt="스크린샷 2024-06-25 오후 5 11 35" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/6cf1213c-73eb-409a-a5da-9ae0868af96b">
 
-# 이미지 추가
 
 ---
 
@@ -599,7 +602,7 @@ GridSearchCV
 -   K를 어떻게 정하는지에 따라서 결과값이 바뀔 수 있다. K는 임의의 데이터가 주어졌을 때 가까운 이웃들의 개수이고 기본값은 5이다.
 -   K는 가장 가까운 5개의 이웃 데이터를 기반으로 분류하며, 일반적으로 홀수를 사용한다. 짝수일 경우 동점이 되어 하나의 결과를 도출할 수 없기 때문이다.
 
-# 이미지 추가
+<img width="605" alt="스크린샷 2024-06-25 오후 5 12 58" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/1938e19c-8033-4ea7-acd7-d4dcd620ce53">
 
 -   KNN은 fit을 통해 훈련시키면, 학습하지 않고 저장만 해놓는다. 따라서 이러한 모델을 Lazy Model이라고 부른다.
 -   새로운 데이터가 주어지면 그제서야 이웃 데이터를 보고 분류해나간다. 따라서 사전 모델링이 필요없는 real-time예측이 이루어진다.
@@ -627,13 +630,14 @@ GridSearchCV
 >
 > -   각 분류기가 만든 예측값을 다수결로 투표해서 가장 많은 표를 얻은 예측값을 최종 예측값으로 결정하는 보팅 방식을 말한다.
 
-# 이미지 추가
+> <img width="326" alt="스크린샷 2024-06-25 오후 5 16 07" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/b4beaeeb-5958-4687-bb4a-21458913a830">
+
 
 > 2. 소프트 보팅 (Soft Voting)
 >
 > -   각 분류기가 예측한 타겟별 확률을 평균내어 가장 높은 확률의 타겟을 최종 예측값으로 도출한다.
 
-# 이미지 추가
+> <img width="339" alt="스크린샷 2024-06-25 오후 5 16 11" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/91576c18-26eb-404e-afb0-d7670958dae1">
 
 #### 배깅 (Baggin, Bootstrap Aggregation)
 
@@ -642,7 +646,8 @@ GridSearchCV
 -   학습 데이터가 충분하지 않더라도 충분한 학습 효과를 주어 과적합등의 문제를 해결하는데 도움을 준다.
 -   배깅방식을 사용한 대표적인 알고리즘이 바로 랜덤 포레스트 알고리즘이다.
 
-# 이미지 추가
+<img width="464" alt="스크린샷 2024-06-25 오후 5 16 52" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/92a6fc73-ea44-4e6c-a4f3-ca3c8584977a">
+
 
 #### 스태킹(Stacking)
 
@@ -658,7 +663,8 @@ GridSearchCV
 -   스태킹은 여러 모델을 조합하여 머신러닝의 다양한 측면을 고려할 수 있어 매우 강력한 앙상블 기법 중 하나입니다.
     그러나 모델이 복잡해지고 계산 비용이 증가할 수 있으므로 주의해서 사용해야 합니다.
 
-# 이미지 추가
+<img width="444" alt="스크린샷 2024-06-25 오후 5 17 02" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/aa2de93b-ed69-4a8c-a0b6-d79563eee528">
+
 
 #### 부스팅(Boosting)
 
@@ -666,7 +672,7 @@ GridSearchCV
 -   이전 분류기를 계속 개선해 나가는 방향으로 학습이 진행되고, 오답에 대한 높은 가중치를 부여하므로 정확도가 높게 나타난다.
 -   높은 가중치를 부여하기 때문에 이상치(Outlier)에 취약할 수 있다.
 
-# 이미지 추가
+<img width="457" alt="스크린샷 2024-06-25 오후 5 17 13" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/386023bf-149f-4468-9cb6-3bd058a0a343">
 
 > 1. Adaboost(Adaptive boosting), 직렬
 >
@@ -675,14 +681,14 @@ GridSearchCV
 > -   stump는 조건식 한 개와 두 갈래의 참, 거짓 리프 노드가 있는 형태이다.
 > -   tree와 다르게, stump는 단 하나의 질문으로 데이터를 분류해야하기 때문에 약한 학습기(weak learner)이다.
 
-# 이미지 추가
+<img width="305" alt="스크린샷 2024-06-25 오후 5 17 26" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2ff08e39-d607-45d6-a43c-4da6a7fc4032">
 
 > -   결과에 미치는 영향이 큰 stump를 Amount of Say가 높다(가중치가 높다)고 한다.
 > -   각 stump의 error는 다음 stump의 결과에 영향을 미치고 줄줄이 마지막 스텀프까지 영향을 미친다.
 > -   모든 stump는 조건식 한 개와 두 갈래의 참, 거짓 리프 노드가 있는 형태이다.
 > -   하나의 stump는 약한 학습기지만 여러 스텀프를 모으면 강한 학습기가 된다.
 
-# 이미지 추가
+<img width="314" alt="스크린샷 2024-06-25 오후 5 17 30" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/fa6a1378-5eb2-42dd-9f23-6321c3a8565d">
 
 > -   Total Error가 0이면 항상 올바룬 분류를 한다는 뜻이고, 1이면 항상 반대로 분류를 한다는 뜻이다.
 > -   만약 Total Error가 0.5라면 Amount of Say는 0이고, 이는 확률이 반반이기 때문에 분류기로서 분류결과를 랜덤을 판단하는 것과 같다.
@@ -696,7 +702,8 @@ GridSearchCV
 > -   잔차를 계속 줄여나가며, 훈련 데이터 세트를 잘 예측하는 모델을 만들 수 있게 된다.
 > -   잔차를 계속 줄이다보면 복잡도가 증가하여 과적합이 일어날 수도 있다는 단점이 있다.
 
-# 이미지 추가
+<img width="584" alt="스크린샷 2024-06-25 오후 5 17 34" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/a0101e02-4857-4e58-9bcb-792ef81a79be">
+
 
 > 3. XGBoost(eXtra Gradient Boost), 병렬
 >
@@ -704,11 +711,13 @@ GridSearchCV
 > -   GBM에 기반하고 있지만 병렬 CPU 환경에서 병렬 학습이 가능하기 때문에 기존 GBM보다 빠르게 학습을 완료할 수 있다.
 > -   하이퍼 파라미터를 조정하여 분할 깊이를 변경할 수 있지만, tree pruning(가지치기)으로 더 이상 긍정 이득이 없는 분할을 가지치기해서 분할 수를 줄이는 추가적인 장점을 가지고 있다.
 
-# 이미지 추가
+<img width="647" alt="스크린샷 2024-06-25 오후 5 17 55" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/be1d8e38-1339-47d7-b880-ed2a169f422a">
+
 
 > 조기 중단 기능(Early Stopping)은 특정 반복 횟수만큼 더 이상 loss funtion이 감소하지 않으면 수행을 종료할 수 있다. 학습 시간을 단축시킬 수 있으며, 최적화 튜닝 시 적절하게 사용 가능하다. 하지만, 반복 횟수를 너무 낮게 설정하면, 최적화 전에 학습이 종료될 수 있기 때문에 조심해야 한다.
 
-# 이미지 추가
+<img width="309" alt="스크린샷 2024-06-25 오후 5 17 59" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ebc85391-0031-4cf5-a6c8-fa21c973f3e1">
+
 
 > 4. LightGBM(Light Gradient Boosting Machine), 병렬
 >
@@ -720,11 +729,11 @@ GridSearchCV
 > -   GOSS 논문  
 >     https://proceedings.neurips.cc/paper_files/paper/2017/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf
 
-# 이미지 추가
+<img width="490" alt="스크린샷 2024-06-25 오후 5 18 14" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/db139115-b38d-474b-a207-6872f4123f25">
 
 >
 
-# 이미지 추가
+<img width="533" alt="스크린샷 2024-06-25 오후 5 18 26" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/b2fad4e7-cec2-4ed9-8f25-3d933ac112ef">
 
 ---
 
@@ -762,17 +771,17 @@ GridSearchCV
     </div>
 </div>
 
-# 이미지 추가
+<img width="359" alt="스크린샷 2024-06-25 오후 5 20 31" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/6ff26462-f41b-4e6a-9f27-f484e5125164">
+<img width="463" alt="스크린샷 2024-06-25 오후 5 20 56" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ea0e95bd-6fa0-44d3-bc40-960df00181b4">
+<img width="412" alt="스크린샷 2024-06-25 오후 5 21 37" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/d53bc3f3-477e-4097-a060-e48ee2151b3b">
 
-# 이미지 추가
-
-# 이미지 추가
 
 -   위에서 확인할 수 있듯이, W는 기울기가 아니라 경사도를 결정하게 된다. 즉, W가 커지면 경사가 높아지고 작아지면 경사가 낮아진다.
 -   b는 커질 수록 왼쪽으로 이동하고, 작아질 수록 오른쪽으로 이동한다.
 -   MSE(평균 제곱 오차) 수식을 통해 경사도와 오차에 대한 그래프를 그리고 미분을 진행하면 다음과 같다.
 
-# 이미지 추가
+<img width="262" alt="스크린샷 2024-06-25 오후 5 21 50" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/44950313-dd2b-497d-9ff7-8f62d68d7d8d">
+
 
 -   경사 하강법을 통해 오차가 최소로 되는 곳에 도착해도 해당 부분이 최소가 아닐 수 있기 때문에(로컬 미니몀), 실제 최소가 되는 곳(글로벌 미니멈)까지 가야한다. 이는 많은 기술을 요하므로 다른 loss function을 고려해봐야한다.
 
@@ -780,18 +789,21 @@ GridSearchCV
 
 -   아래 그래프는 y = 0.5에 대칭하는 log 함수이다.
 
-# 이미지 추가
+<img width="223" alt="스크린샷 2024-06-25 오후 5 21 58" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/3205b7db-e2b0-4207-ac7a-c991eead25c0">
+
 
 -   실제값이 0일 때 예측값이 1에 가까워지면 loss가 점점 커지고, 실제값이 1일 때 예측값이 0에 수렴해도 loss가 점점 커진다.
 -   위 로그 함수를 수식으로 나타내면 다음과 같다
 
-# 이미지 추가
+<img width="399" alt="스크린샷 2024-06-25 오후 5 22 06" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/09a2fe46-42b5-4d87-9407-1a673843b73b">
+
 
 -   위 식을 통해 W에 대한 loss function을 구하는 식은 아래와 같다.
 
-# 이미지 추가
+<img width="435" alt="스크린샷 2024-06-25 오후 5 22 16" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7d46b921-256c-4f64-8115-a940ac241db0">
+
 
 -   실제값 y와 예측값 H(x)의 차이가 커질 수록 loss값이 커지고 차이가 작아지면 loss값이 작아진다.  
     위의 loss function에 대해서 경사 하강법을 수행하며 최적의 경사도(W)를 찾아간다.
 
-# 이미지 추가
+<img width="235" alt="스크린샷 2024-06-25 오후 5 22 24" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/2b558fd3-d615-47b6-ad2d-84f99ee27ef3">
