@@ -823,11 +823,9 @@ GridSearchCV
         </tr>
     </table>  
     <div style="margin-top: 60px;">
-        <img src="../images/regression_train.png">
+        <img width="352" alt="스크린샷 2024-06-26 오전 11 23 40" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/45f8fdea-c905-4293-a2c6-90accfa3a9f8">
     </div>
 </div>
-
-# 위에 이미지 추가
 
 ---
 
@@ -835,11 +833,11 @@ GridSearchCV
     학습 데이터(x)를 가장 잘 표현할 수 있는 직선을 찾아야 하고, 이 식을 가설(Hypothesis)라고 한다.
 -   아래는 위 데이터를 표현하고자 하는 직선의 방정식과 가설이다.
 
-# 이미지 추가
+<img width="121" alt="스크린샷 2024-06-26 오전 11 23 44" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/dc168c36-c0fa-4009-acbb-735255ab1208">
 
 -   수학에서 W는 기울기, b는 절편이지만, 가설에서 W(Weight) 가중치, b(bias)를 편향이라 한다. 편향은 다양한 요인을 대표하는 값이다.
 
-# 이미지 추가
+<img width="415" alt="스크린샷 2024-06-26 오전 11 24 27" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/5625dc21-d10d-4fb6-9976-c88bf5dcd8be">
 
 -   위 3개의 직선 중에서 데이터를 가장 잘 표현한 직선을 고르고자 한다면, 오차(error)를 구해봐야 한다.
 
@@ -945,15 +943,15 @@ GridSearchCV
 -   따라서 **각 제곱을 한 뒤 더하고 평균**을 구한다.
 -   이를 **`평균 제곱 오차(MSE)`**라고 한다.
 
-# 이미지 추가
+<img width="163" alt="스크린샷 2024-06-26 오전 11 24 51" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/51fefedc-2f64-455b-892e-fcaa589514e5">
 
 -   이 때, 오차를 구해주는 함수로 표현하면 아래와 같이 손실 함수 (loss function)로 표현된다.
 
-# 이미지 추가
+<img width="267" alt="스크린샷 2024-06-26 오전 11 24 55" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/dc75bf1c-c0d2-4a1e-b556-ffeccbb5b4be">
 
 -   즉, 손실 함수가 최소가 되는 W와 b를 구함으로써 훈련 데이터를 가장 잘 나타내는 직선을 고를 수 있다.
 
-# 이미지 추가
+<img width="462" alt="스크린샷 2024-06-26 오전 11 24 58" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7525f13d-5e6b-4bd9-9013-96edb5d3875a">
 
 ### 최적화(Optimizer) - 경사 하강법(Gradient Descent)
 
@@ -966,23 +964,23 @@ GridSearchCV
 -   따라서 기울기와 오차는 기울기가 커질 수록 Loss 값도 커지고,  
     지나치게 작아져도 Loss 값은 계속 커지기 때문에 아래와 같은 관계 그래프가 나온다.
 
-# 이미지 추가
+<img width="231" alt="스크린샷 2024-06-26 오전 11 25 44" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/aba7ca24-0b4e-49db-9c2f-f37463a00709">
 
 -   위 그래프에서 Loss 값이 가장 최소가 되는 W를 찾아야 한다.
 -   임의의 초기값 W를 정한 뒤, 점차 W를 수정해야 하는데, 이를 경사 하강법(Gradient Descent)으로 진행할 수 있다.
 
-# 이미지 추가
+<img width="235" alt="스크린샷 2024-06-26 오전 11 25 48" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/a1d55c61-766b-44bc-b5ed-8f3a18a5f4d8">
 
 -   W가 아래로 내려갈 수록 접선의 기울기가 점점 작아지고 Loss 값이 최소가 되는 부분은 결국 접선의 기울기가 0으로 된다.
 -   이 말은 즉, Loss 값이 최소가 되는 지점은 미분값이 0이 되는 지점이다.
 -   기존 W에 경사 하강법 알고리즘에 대한 값을 빼주면서 점점 업데이트되며, 이는 아래 수식으로 표현이 가능하다.
 
-# 이미지 추가
+<img width="221" alt="스크린샷 2024-06-26 오전 11 25 51" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/366a61e9-f333-4a3a-b4f6-1d2d5bd1608d">
 
 -   빼줄 값에 η(에타)를 곱해줄 수 있는데, 이 η(에타)가 바로 학습률이다.
 -   학습률로 하강 속도를 조절할 수 있으며, 너무 크게 주면 발산하고 너무 작게 주면 최소값까지 도달하지 못할 수 있다.
 
-# 이미지 추가
+<img width="448" alt="스크린샷 2024-06-26 오전 11 25 55" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/ddb9b029-8a29-4e59-8aa5-b209e8da2987">
 
 ---
 
@@ -1001,7 +999,7 @@ GridSearchCV
 -   전체가 아닌 일부 데이터를 사용하기 떄문에 W가 최적값에 수렴하기 위해 많이 해맬 수 있다.
 -   하지만 상대적으로 훈련 속도가 빨라서 시간적 효율이 높다.
 
-# 이미지 추가
+<img width="378" alt="스크린샷 2024-06-26 오전 11 28 35" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/aaffefe5-5e3e-4954-afb9-695ad7d70166">
 
 ---
 
@@ -1021,7 +1019,7 @@ GridSearchCV
 -   전체적으로 5를 넘어가면 10 이상을 판단한다.
 -   다중 공선성(Multicollinearity)이란 회귀 분석에서 독립변수들 간에 강한 상관관계가 나타나는 문제를 뜻한다.
 
-# 이미지 추가
+<img width="382" alt="스크린샷 2024-06-26 오전 11 29 09" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/6c85a245-eb3e-47f6-81b7-9dc2fa2cf35a">
 
 ---
 
@@ -1030,15 +1028,15 @@ GridSearchCV
 -   결정 트리와 결정 트리 기반의 앙상블 알고리즘은 분류뿐 아니라 회귀분석도 가능하다.
 -   분류와 유사하게 분할하며, 최종 분할 수 각 분할 영역에서 실제 데이터까지의 거리들의 평균 값으로 학습 및 예측을 수행한다.
 
-# 이미지 추가
+<img width="471" alt="스크린샷 2024-06-26 오전 11 30 14" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/0f1f0791-416c-4438-9906-ebd560507b32">
 
 -   회귀 트리 역시 복잡한 트리 구조를 가질 경우 과적합의 위험이 있고, 트리 크기와 노드의 개수 제한등으로 개선해야 한다.
 
-# 이미지 추가
+<img width="540" alt="스크린샷 2024-06-26 오전 11 30 19" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/4d31bd6c-cadd-4c42-9054-c63992027119">
 
 -   독립 변수들과 종속 변수 사이의 관계가 상당히 비선형적일경우 사용하는 것이 좋다.
 
-# 이미지 추가
+<img width="609" alt="스크린샷 2024-06-26 오전 11 30 24" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/e23e82b9-648b-4cee-9abc-cf93ab99a242">
 
 ---
 
@@ -1053,7 +1051,7 @@ GridSearchCV
 -   L1 NORM의 경우에 절대값에 대한 식이므로 미분이 불가능한 점이 있지만, 특정 방식을 통해 미분하면 가중치가 0이 된다. 따라서 경사하강법을 통해 학습하는 모델에는 적합하지 않다.
 -   중요하지 않은 feature들은 모델에서 제외하여 모델을 단순하게 만들고, 가장 영향력이 큰 특성이 무엇인지 알 수 있기 때문에 모델의 해석력이 좋아진다.
 
-# 이미지 추가
+<img width="560" alt="스크린샷 2024-06-26 오전 11 31 31" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/7cce9708-8ff8-44df-9109-9072194b9348">
 
 #### 릿지(Ridge)
 
@@ -1062,7 +1060,7 @@ GridSearchCV
 -   L2 NORM의 경우 미분했을 때 가중치가 남아있기 때문에, 경사하강법을 통해 학습하는 모델에 적합하다.
 -   값이 0이 되어 제외되는 feature가 없지만, 골고루 0에 가까운 값으로 작아지기 때문에 장기적으로 더 좋은 모델이 된다.
 
-# 이미지 추가
+<img width="538" alt="스크린샷 2024-06-26 오전 11 31 37" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/eaf7910f-1cbf-4a16-8e02-db894b19659e">
 
 **λ (Regulation parameter)**
 
@@ -1094,14 +1092,7 @@ GridSearchCV
 -   2차원 공간에서 1차원 공간으로 차원 축소를 진행하면, 1차원 공간상에서 데이터 분포가 가장 넓게 퍼지게 만드는 고유 벡터를 찾아야 한다.
 -   고유 벡터를 찾았다면 feature 데이터들을 고유 벡터 축에 투영시킴으로써 주성분을 찾아낼 수 있게 된다.
 
-<div style="display: flex">
-    <div>
-        <img src="./images/pca01.gif" style="margin-left: -200px">
-    </div>
-    <div>
-        <img src="./images/pca02.gif" width="700" style="margin-top:50px; margin-left: -350px">
-    </div>
-</div>
+<img width="538" alt="스크린샷 2024-06-26 오전 11 36 00" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/f3ee4652-fd31-461c-a005-e57ea25a8692">
 
 #### LDA (Linear Discriminant Analysis)
 
@@ -1109,8 +1100,7 @@ GridSearchCV
 -   PCA는 가장 큰 분산을 가지는 축을 찾았지만, LDA는 입력 데이터의 클래스를 최대한 분리할 수 있는 축을 찾는다.
 -   클래스를 최대한 분리하기 위해서 클래스 간 분산을 최대화하고 클래스 내부 분산을 최소화 하는 방식으로 차원을 축소한다.
 
-# 이미지 추가 (PCA 01, 02) 확인해서 직접 넣을 것
+<img width="831" alt="스크린샷 2024-06-26 오전 11 36 08" src="https://github.com/kimgusan/Machine_Learning/assets/156397911/0f9ce059-520b-4640-a781-cc937bf52334">
 
-# 이미지 추가
 
 ---
